@@ -17,14 +17,14 @@ export const Carousal = () => {
             spaceBetween={50}
             slidesPerView={1}
             effect="fade" // Enable the fade effect
-            // autoplay={{
-            //     delay: 3000,
-            //     disableOnInteraction: false,
-            // }}
+            autoplay={{
+                delay: 3000,
+                disableOnInteraction: false,
+            }}
             loop={true}
         >
 
-            <SwiperSlide className="border border-black bg-[white] p-6">
+            <SwiperSlide className="bg-[white] p-6">
                 <div className="flex justify-evenly h-[200px]">
                     <img className="h-[150px] w-[auto] relative left-[-24px] my-[auto]" src={img1} alt="Slide 2" />
                     <div className="my-[auto] w-[150px] ">
@@ -37,7 +37,7 @@ export const Carousal = () => {
                 </div>
             </SwiperSlide>
 
-            <SwiperSlide className="border border-black bg-white p-6">
+            <SwiperSlide className="bg-white p-6">
                 <div className="flex justify-evenly h-[200px]">
                     <img className="h-[150px] w-[auto] relative left-[-24px] my-[auto]" src={img2} alt="Slide 2" />
                     <div className="my-[auto] w-[150px] ">
@@ -50,7 +50,7 @@ export const Carousal = () => {
                 </div>
             </SwiperSlide>
 
-            <SwiperSlide className="border border-black bg-white p-6">
+            <SwiperSlide className="bg-white p-6">
                 <div className="flex justify-evenly h-[200px]">
                     <img className="h-[150px] w-[auto] relative left-[-24px] my-[auto]" src={img3} alt="Slide 2" />
                     <div className="my-[auto] w-[150px] ">

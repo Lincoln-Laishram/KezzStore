@@ -1,27 +1,40 @@
-import { NavBar } from "../Components/Navigation"
-import { Carousal } from "../Components/Carousel"
-import img1 from "../assets/Pictures/emperor.png"
+import { NavBar } from "../Components/Navigation";
+import { Carousal } from "../Components/Carousel";
+// TOP SALES
+import img1 from "../assets/Pictures/emperor.png";
+import img2 from "../assets/Pictures/neuroactiv6.png";
+import img3 from "../assets/Pictures/pinealxt.png";
+
 export const HomePage = () => {
     return (
         <>
-            <div className="h-[400px] w-full relative z-10">
-                <NavBar />
-                <div className="relative relative top-3">
-                    <center>
-                        <input type="text" placeholder="search..." className="border-solid border-black border-[1px]" />
-                    </center>
-                </div>
-                <div className="h-[350px] w-full absolute top-[150px] z-[1] bg-white">
+            {/* Move Navbar Outside the Relative Container */}
+            <NavBar />
+
+            <div className="h-[300px] w-full relative">
+                <div className="border-solid border-black border-[1px] h-[250px] w-full absolute top-[0px] z-[1] bg-white">
                     <Carousal />
                 </div>
             </div>
 
-            {/* This div should remain in the normal document flow */}
-            <div className="relative">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut ratione et necessitatibus neque ducimus assumenda ipsam at animi perferendis quia deserunt itaque obcaecati, debitis unde ipsum illo, nostrum ea tenetur.
+            <div className="relative text-center">
+                <h1 className="text-bold text-3xl font-bold">
+                    OUR TOP SALE
+                </h1>
+                <br />
+                <div className="p-4">
+                    <img src={img1} alt="img" className="h-[160px] mx-[auto]" />
+                    <p className="text-lg font-semibold">Emperor</p>
+                </div>
+                <div className="p-4">
+                    <img src={img2} alt="img" className="h-[160px] mx-[auto]" />
+                    <p className="text-lg font-semibold">Neuroactiv6</p>
+                </div>
+                <div className="p-4">
+                    <img src={img3} alt="img" className="h-[160px] mx-[auto]" />
+                    <p className="text-lg font-semibold">Pinealxt</p>
+                </div>
             </div>
-
-
         </>
-    )
-}
+    );
+};
