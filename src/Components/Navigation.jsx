@@ -13,7 +13,7 @@ export const NavBar = () => {
     return (
         <>
             <div
-                className={`transition-all duration-300 ease-in-out border border-gray-400 ${isOpen ? "h-[350px]" : "h-[100px]"} overflow-hidden relative z-10 bg-gray-200`}
+                className={`transition-all duration-300 ease-in-out border border-gray-400 ${isOpen ? "h-[400px]" : "h-[100px]"} overflow-hidden relative z-10 bg-gray-200`}
             >
                 <div className="flex items-center px-4">
                     <img src={logo} alt="logo" className="h-[80px]" />
