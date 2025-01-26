@@ -14,7 +14,7 @@ export const NavBar = () => {
     return (
         <>
         <div
-            className={`transition-all duration-200 ease-in-out border border-gray-400 ${isOpen ? "h-[400px]" : "h-[100px]"
+            className={`transition-all duration-200 ease-in-out border border-gray-400 ${isOpen ? "h-[400px]" : "h-[90px]"
                 } overflow-hidden z-10 bg-gray-200 sticky top-0`}
         >
             <div className="flex items-center px-4">
