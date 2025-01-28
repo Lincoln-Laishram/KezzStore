@@ -1,6 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { account } from '../Config/Auth';
+
+// Icons
+import logo from "../assets/Pictures/icon.png"
+import { FaGoogle, FaFacebook } from 'react-icons/fa';
+
 export const SignIn = () => {
     const [error, setError] = useState(null);
     const navigate = useNavigate();
@@ -53,35 +58,55 @@ export const SignIn = () => {
     }, []);
 
     /* Display toast notification on error */
-   // Runs only when `error` changes
+    // Runs only when `error` changes
 
     return (
         <>
-                <form class="form" onSubmit={HandleLogin}>
-                    <p class="form-title">Welcome back</p>
-                    <div class="input-container">
-                    <input
-                        type="email"
-                        name="email"
-                        placeholder="Enter email..."
-                    />                          
+            <div className="my-14">
+                <img src={logo} alt="logo" className="h-[220px] mx-[auto]" />
+                <br /><br />
+                <center>
+                    <form class="form" onSubmit={HandleLogin}>
+                        <div class="input-container">
+                            <input
+                                type="email"
+                                name="email"
+                                placeholder="Enter email..."
+                                className="bg-gray-300 p-2 w-[70%] rounded-lg m-2 placeholder-black"
+                            />
+                        </div>
+                        <div class="input-container">
+                            <input
+                                type="password"
+                                name="password"
+                                placeholder="Enter password..."
+                                autoComplete="password"
+                                className="bg-gray-300 p-2 w-[70%] rounded-lg m-2 placeholder-black"
+                            />
+                        </div>
+                        <br />
+                        <button class="submit" type="submit" className="bg-blue-600 text-white p-1 w-[25%] rounded-lg text-l">
+                            Sign in
+                        </button>
+                    </form>
+                    <br />
+                    <b>Already have an account ?</b> <Link to="/sign_in" className="text-[blue] font-semibold underline">Sign in</Link>
+                    <br /><br />
+                    <div>
+                        <p className="font-bold text-xl">Or continue with</p>
+                    </div> <br />
+                    <div className="flex justify-center gap-2 text-3xl">
+                        <FaGoogle /> <FaFacebook />
                     </div>
-                    <div class="input-container">
-                    <input
-                        type="password"
-                        name="password"
-                        placeholder="Enter password..."
-                        autoComplete="password"
-                    />
-                    </div>
-                    <button class="submit" type="submit">
-                        Sign in
-                    </button>
-
-                    <p class="signup-link">
-                       <b> No account? </b> <Link to = "/sign_up">Sign up</Link>
+                    <br />
+                    <p className="my-24">
+                        Terms and conditions ?
                     </p>
-                </form>
+                    {/* <br /> */}
+                    {/* {error && <p>Error: {error}</p>} */}
+                </center>
+
+            </div>
         </>
     );
 };

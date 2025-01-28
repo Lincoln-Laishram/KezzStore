@@ -2,12 +2,29 @@ import { Link } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { ImCross } from "react-icons/im";
 import { CgProfile } from "react-icons/cg";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import logo from "../assets/Pictures/icon.png";
+import { account } from "../Config/Auth";
 
 export const NavBar = () => {
     const [isOpen, setIsOpen] = useState(false);
-
+    const [isCreate, setCreate] = useState(false);
+    useEffect(() => {
+        async function checkSession() {
+            try {
+                const user = await account.get();
+                if (user) {
+                    setCreate(true);
+                }
+                console.log('User logged in:', user);
+            }
+            catch (error) {
+                console.log('No active session found.');
+                setCreate(false);
+            }
+        }
+        checkSession();
+    }, [])
     const toggleMenu = () => {
         setIsOpen(!isOpen);
     };
@@ -30,9 +47,7 @@ export const NavBar = () => {
                         } transition-opacity duration-300 top-0 sticky`}
                 >
                     <li>
-                        <Link to = "/sign_up">
-                            <CgProfile className="text-6xl mx-auto" />
-                        </Link>
+                        {isCreate ? <Link to = "/user_profile"><CgProfile className="text-6xl mx-auto" /></Link> : <Link to="/sign_up"><CgProfile className="text-6xl mx-auto" /></Link>}
                     </li>
                     <li>About</li>
                     <li>Services</li>
