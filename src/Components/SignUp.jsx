@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { account } from "../CONFIG/Auth";
+import { account } from "../Config/Auth";
 import { ID } from "appwrite";
 
 //IMAGES

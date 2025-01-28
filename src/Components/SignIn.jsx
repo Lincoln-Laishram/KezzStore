@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { account } from '../CONFIG/Auth';
+import { account } from '../Config/Auth';
 export const SignIn = () => {
     const [error, setError] = useState(null);
     const navigate = useNavigate();
