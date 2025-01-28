@@ -11,9 +11,11 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.0.0",
+    "appwrite": "^16.1.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-icons": "^5.4.0",
+    "react-router-dom": "^7.1.3",
     "swiper": "^11.2.1"
   },
   "devDependencies": {
