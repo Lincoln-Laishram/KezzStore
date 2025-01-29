@@ -84,13 +84,18 @@ export const SignIn = () => {
                                 className="bg-gray-300 p-2 w-[70%] rounded-lg m-2 placeholder-black"
                             />
                         </div>
+                        <div>
+                            <Link className='text-[blue] underline font-semibold'>
+                                Forgot password ?
+                            </Link>
+                        </div>
                         <br />
                         <button class="submit" type="submit" className="bg-blue-600 text-white p-1 w-[25%] rounded-lg text-l">
                             Sign in
                         </button>
                     </form>
                     <br />
-                    <b>Already have an account ?</b> <Link to="/sign_in" className="text-[blue] font-semibold underline">Sign in</Link>
+                    <b>Don't have an account ?</b> <Link to="/sign_up" className="text-[blue] font-semibold underline">Sign up</Link>
                     <br /><br />
                     <div>
                         <p className="font-bold text-xl">Or continue with</p>
