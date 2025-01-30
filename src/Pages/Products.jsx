@@ -3,12 +3,15 @@ import { NavBar } from "../Components/Navigation";
 
 //icons
 import { FaSearch } from "react-icons/fa";
+import { FaHeart } from "react-icons/fa";
+
 //product images:
 import imgProduct from '../assets/Pictures/emperor.png'
 
 
 export const Products = () => {
     const [search, setSearch] = useState(""); // Remove extra spaces in the initial state
+    const [wishList, setWishList] = useState(() => JSON.parse(localStorage.getItem("wish")) || []); // Remove extra spaces in the initial state
     const [visibleCount, setVisibleCount] = useState(5);
 
     const HandleChange = (e) => {
@@ -44,8 +47,30 @@ export const Products = () => {
     );
 
     const HandleSeeMore = () => {
-        setVisibleCount((prev)=>prev+5);
+        setVisibleCount((prev) => prev + 5);
     }
+    // const WishList = () => {
+    //     setWish((prev) => !prev)
+    // }
+
+    const addToWishList = (item) => {
+        const currentItem = JSON.parse(localStorage.getItem("wish")) || [];
+        const isDuplicate = currentItem.some(wishItem => wishItem.id === item.id);
+
+        if (!isDuplicate) {
+            const updatedItem = [...currentItem, item];
+            localStorage.setItem("wish", JSON.stringify(updatedItem));
+            setWishList(updatedItem); // Update state to reflect changes
+            console.log("Item added to wishlist successfully");
+        } else {
+            alert("Item already in wishlist");
+        }
+    };
+
+    const isItemInWishList = (itemId) => {
+        return wishList.some(wishItem => wishItem.id === itemId);
+    };
+
 
     return (
         <>
@@ -64,29 +89,44 @@ export const Products = () => {
                     />
                 </div>
             </center>
-
-
-            {/* Display Filtered Products */}
+            <center>
+                <div className="flex justify-center gap-4">
+                    <div className="h-[40px] w-[100px] bg-[gray] rounded-full"></div>
+                    <div className="h-[40px] w-[100px] bg-[gray] rounded-full"></div>
+                    <div className="h-[40px] w-[100px] bg-[gray] rounded-full"></div>
+                </div>
+            </center>
+            <br />
             <div>
                 {filteredItems.length > 0 ? (
-                    filteredItems.slice(0,visibleCount).map((item) => (
-                        <>
-                            <div key={item.id} className="flex items-center my-1 bg-gray-300 p-4 gap-4">
+                    filteredItems.slice(0, visibleCount).map((item) => (
+                        <div className="">
+                            <div key={item.id} className="flex items-center my-1 bg-gray-300 p-3 gap-4">
                                 <div>
-                                    <img src={item.img} alt="img" className="h-[160px]" />
+                                    <img src={item.img} alt="img" className="h-[180px] w-[200px]" />
                                 </div>
-                                <div className="w-[200px]">
-                                    <h2 className="font-semibold text-2xl">{item.name}</h2>
-                                    <p>
+                                <div className="w-[200px] p-1">
+                                    <h2 className="font-semibold text-2xl">
+                                        {item.name}
+                                    </h2>
+                                    <p className="w-[auto]">
                                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas in nesciunt placeat sapiente
                                     </p>
-                                    <h2 className="text-black text-lg font-semibold">${item.price}</h2>
+                                    <div className="text-black text-xl font-semibold flex items-center gap-2">
+                                        ${item.price}
+                                        <button onClick={() => addToWishList(item)}>
+                                            <FaHeart className={`text-2xl ${isItemInWishList(item.id) ? "text-red-600" : "text-gray-500"}`} />
+                                        </button>
+
+                                    </div> <br />
                                 </div>
                             </div>
-                        </>
+                        </div>
                     ))
                 ) : (
-                    <p className="text-center text-gray-500">No products found</p>
+                    <p className="text-center text-gray-500">
+                        No products found
+                    </p>
                 )}
                 <center>
                     <button onClick={HandleSeeMore} className="bg-blue-600 text-white p-1 w-[28%] rounded-lg text-lg">

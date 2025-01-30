@@ -2,8 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Logout } from '../Config/Logout';
 import { account } from '../Config/Auth';
+// ICONS
+import { FaTrash } from 'react-icons/fa';
 export const Profile = () => {
   const [userName, setUserName] = useState('');
+  const [wishLists, setWishLists] = useState([]);
   const [isRegisteredUser, setIsRegisteredUser] = useState(false);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
@@ -23,6 +26,20 @@ export const Profile = () => {
     checkSession();
   }, []);
 
+  useEffect(() => {
+    const wishDatas = localStorage.getItem("wish");
+    if (wishDatas) {
+      setWishLists(JSON.parse(wishDatas));
+    }
+  }, [])
+
+  const Delete = (id) => {
+    const newWishLists = wishLists.filter((item) => item.id !== id);
+    localStorage.setItem("wish", JSON.stringify(newWishLists));
+    setWishLists(newWishLists);
+    console.log('Deleted');
+  }
+
   const handleLogOut = async () => {
     await Logout()
     if (isRegisteredUser) {
@@ -41,22 +58,56 @@ export const Profile = () => {
   };
   return (
     <>
-    <div>
-      <br />
-      <p className='text-center text-2xl'>
-        <strong> 
-          Welcome <i>{userName || 'N/A'}</i> 🥳</strong> 
-      </p>
-      <center>
-        <button
-          onClick={handleLogOut}
-          className="bg-black text-white font-bold h-[40px] w-[100px] rounded-3xl  p-0"
-        >
-          Logout
-        </button>
-      </center>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-    </div>
+      <div>
+        <br />
+        <p className='text-center text-2xl'>
+          <strong>
+            Welcome <i>{userName || 'N/A'}</i> 🥳</strong>
+        </p>
+        <center>
+          <button
+            onClick={handleLogOut}
+            className="bg-black text-white font-bold h-[40px] w-[100px] rounded-3xl  p-0"
+          >
+            Logout
+          </button>
+        </center>
+        <div>
+          <h1 className='text-xl font-semibold mx-10'>
+            Wishlists :
+          </h1>  
+            <div className="p-4 w-[90%] mx-[auto]">
+              {wishLists.length === 0 ? (
+                <div className="text-center py-10">
+                  <h3 className="text-2xl font-semibold text-blue-800">Wish list is empty</h3>
+                </div>
+              ) : (
+                <div className="">
+                  {wishLists.map((cartItem, index) => (
+                    <div key={cartItem.id} className="flex bg-gray-300 p-2">
+                      <img src={cartItem.img} alt="img" className='h-[140px]' />
+                      <div className='flex flex-col items-center justify-evenly mx-[20px]'>
+                        <h2 className="text-2xl font-bold ">{cartItem.name}</h2>
+                        <p className="text-lg">Price: ₹{cartItem.price}</p>
+                        <button
+                          onClick={() => Delete(cartItem.id)}
+                          className="mt-2 px-4 py-2 bg-red-500 w-[80%] text-white font-bold rounded hover:bg-red-700 transition duration-300"
+                        >
+                          <center>
+                            <FaTrash />
+                          </center>
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                  <div className="mt-6 text-center">
+                  </div>
+                </div>
+              )}
+            </div>
+        </div>
+        {error && <p style={{ color: 'red' }}>{error}</p>}
+      </div>
     </>
   );
 }
