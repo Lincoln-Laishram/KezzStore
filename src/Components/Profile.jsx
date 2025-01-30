@@ -4,6 +4,11 @@ import { Logout } from '../Config/Logout';
 import { account } from '../Config/Auth';
 // ICONS
 import { FaTrash } from 'react-icons/fa';
+import { IoIosLogOut } from "react-icons/io";
+import { MdAccountCircle } from "react-icons/md";
+import { IoIosArrowBack } from "react-icons/io";
+
+
 export const Profile = () => {
   const [userName, setUserName] = useState('');
   const [wishLists, setWishLists] = useState([]);
@@ -58,53 +63,54 @@ export const Profile = () => {
   };
   return (
     <>
-      <div>
-        <br />
-        <p className='text-center text-2xl'>
-          <strong>
-            Welcome <i>{userName || 'N/A'}</i> 🥳</strong>
+      <div className=''>
+        <IoIosArrowBack className='relative top-6 left-2 text-6xl cursor-pointer text-blue-500' onClick={() => navigate('/')} />
+        <center>
+          <MdAccountCircle className='text-[100px] text-blue-500 ' />
+        </center>
+
+        <p className='text-center text-4xl center my-4'>
+          <p className='uppercase font-bold'>{userName || 'N/A'}</p>
         </p>
         <center>
           <button
             onClick={handleLogOut}
-            className="bg-black text-white font-bold h-[40px] w-[100px] rounded-3xl  p-0"
+            className="my-4 bg-blue-600 text-white font-bold h-[40px] w-[100px] rounded-lg  p-0 flex items-center justify-evenly"
           >
-            Logout
+            Logout <IoIosLogOut className='text-xl' />
           </button>
         </center>
         <div>
-          <h1 className='text-xl font-semibold mx-10'>
+          <h1 className='text-3xl font-semibold mx-6'>
             Wishlists :
-          </h1>  
-            <div className="p-4 w-[90%] mx-[auto]">
-              {wishLists.length === 0 ? (
-                <div className="text-center py-10">
-                  <h3 className="text-2xl font-semibold text-blue-800">Wish list is empty</h3>
-                </div>
-              ) : (
-                <div className="">
-                  {wishLists.map((cartItem, index) => (
-                    <div key={cartItem.id} className="flex bg-gray-300 p-2">
-                      <img src={cartItem.img} alt="img" className='h-[140px]' />
-                      <div className='flex flex-col items-center justify-evenly mx-[20px]'>
-                        <h2 className="text-2xl font-bold ">{cartItem.name}</h2>
-                        <p className="text-lg">Price: ₹{cartItem.price}</p>
-                        <button
-                          onClick={() => Delete(cartItem.id)}
-                          className="mt-2 px-4 py-2 bg-red-500 w-[80%] text-white font-bold rounded hover:bg-red-700 transition duration-300"
-                        >
-                          <center>
-                            <FaTrash />
-                          </center>
-                        </button>
-                      </div>
+          </h1>
+          <div className="p-2 mx-[auto]">
+            {wishLists.length === 0 ? (
+              <div className="text-center py-10">
+                <h3 className="text-2xl font-semibold text-blue-800">Wish list is empty</h3>
+              </div>
+            ) : (
+              <div className="">
+                {wishLists.map((cartItem, index) => (
+                  <div key={cartItem.id} className="flex bg-gray-300 p-4 m-4 w-[90%] rounded-lg">
+                    <img src={cartItem.img} alt="img" className='h-[140px]' />
+                    <div className='flex flex-col items-center justify-evenly mx-[20px]'>
+                      <h2 className="text-2xl font-bold ">{cartItem.name}</h2>
+                      <p className="text-lg">Price: ₹{cartItem.price}</p>
+                      <button
+                        onClick={() => Delete(cartItem.id)}
+                        className="mt-2 px-4 py-2 bg-red-500 w-[80%] text-white font-bold rounded hover:bg-red-700 transition duration-300"
+                      >
+                        <center>
+                          <FaTrash />
+                        </center>
+                      </button>
                     </div>
-                  ))}
-                  <div className="mt-6 text-center">
                   </div>
-                </div>
-              )}
-            </div>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
         {error && <p style={{ color: 'red' }}>{error}</p>}
       </div>
