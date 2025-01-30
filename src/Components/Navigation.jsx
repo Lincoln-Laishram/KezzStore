@@ -3,7 +3,9 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { ImCross } from "react-icons/im";
 import { CgProfile } from "react-icons/cg";
 import { useState, useEffect } from "react";
+// ICONS
 import logo from "../assets/Pictures/icon.png";
+import { MdSupervisorAccount } from "react-icons/md";
 import { account } from "../Config/Auth";
 
 export const NavBar = () => {
@@ -47,7 +49,7 @@ export const NavBar = () => {
                         } transition-opacity duration-300 top-0 sticky`}
                 >
                     <li>
-                        {isCreate ? <Link to = "/user_profile"><CgProfile className="text-6xl mx-auto" /></Link> : <Link to="/sign_up"><CgProfile className="text-6xl mx-auto" /></Link>}
+                        {isCreate ? <Link to = "/user_profile"><CgProfile className="text-6xl mx-auto" /></Link> : <Link to="/sign_up"><MdSupervisorAccount className="text-6xl mx-auto" /></Link>}
                     </li>
                     <li>About</li>
                     <li>Services</li>
