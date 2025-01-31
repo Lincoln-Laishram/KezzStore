@@ -7,6 +7,8 @@ import { FaTrash } from 'react-icons/fa';
 import { IoIosLogOut } from "react-icons/io";
 import { MdAccountCircle } from "react-icons/md";
 import { IoIosArrowBack } from "react-icons/io";
+import { FaHeart } from "react-icons/fa";
+
 
 
 export const Profile = () => {
@@ -81,8 +83,8 @@ export const Profile = () => {
           </button>
         </center>
         <div>
-          <h1 className='text-3xl font-semibold mx-6'>
-            Wishlists :
+          <h1 className='text-3xl font-semibold mx-6 flex gap-2 items-center'>
+            Wishlists <FaHeart className='text-red-500'/>
           </h1>
           <div className="p-2 mx-[auto]">
             {wishLists.length === 0 ? (

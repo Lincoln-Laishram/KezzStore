@@ -129,8 +129,8 @@ export const Products = () => {
                     </p>
                 )}
                 <center>
-                    <button onClick={HandleSeeMore} className="bg-blue-600 text-white p-1 w-[28%] rounded-lg text-lg">
-                        SEE MORE
+                    <button onClick={HandleSeeMore} className="relative bg-blue-600 text-white p-1 w-[35%] rounded-lg text-lg top-4">
+                        LOAD MORE
                     </button>
                 </center>
             </div>
