@@ -18,10 +18,8 @@ export const NavBar = () => {
                 if (user) {
                     setCreate(true);
                 }
-                console.log('User logged in:', user);
             }
             catch (error) {
-                console.log('No active session found.');
                 setCreate(false);
             }
         }

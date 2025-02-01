@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { NavBar } from "../Components/Navigation";
-
+import { useNavigate, Link } from "react-router-dom";
+import { Items } from "../Components/Items";
 //icons
 import { FaSearch } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
@@ -10,36 +11,16 @@ import imgProduct from '../assets/Pictures/emperor.png'
 
 
 export const Products = () => {
+    const items = Items();
     const [search, setSearch] = useState(""); // Remove extra spaces in the initial state
     const [wishList, setWishList] = useState(() => JSON.parse(localStorage.getItem("wish")) || []); // Remove extra spaces in the initial state
     const [visibleCount, setVisibleCount] = useState(5);
-
+    const navigate = useNavigate();
     const HandleChange = (e) => {
         setSearch(e.target.value);
     };
 
-    const items = [
-        { id: 0, img: imgProduct, name: "Product1", price: 10 },
-        { id: 1, img: imgProduct, name: "Product2", price: 20 },
-        { id: 2, img: imgProduct, name: "Product3", price: 30 },
-        { id: 3, img: imgProduct, name: "Product4", price: 40 },
-        { id: 4, img: imgProduct, name: "Product5", price: 50 },
-        { id: 5, img: imgProduct, name: "Product6", price: 10 },
-        { id: 6, img: imgProduct, name: "Product7", price: 20 },
-        { id: 7, img: imgProduct, name: "Product8", price: 30 },
-        { id: 8, img: imgProduct, name: "Product9", price: 40 },
-        { id: 9, img: imgProduct, name: "Product10", price: 50 },
-        { id: 10, img: imgProduct, name: "Product11", price: 10 },
-        { id: 11, img: imgProduct, name: "Product12", price: 20 },
-        { id: 12, img: imgProduct, name: "Product13", price: 30 },
-        { id: 13, img: imgProduct, name: "Product14", price: 40 },
-        { id: 14, img: imgProduct, name: "Product15", price: 50 },
-        { id: 15, img: imgProduct, name: "Product16", price: 10 },
-        { id: 16, img: imgProduct, name: "Product17", price: 20 },
-        { id: 17, img: imgProduct, name: "Product18", price: 30 },
-        { id: 18, img: imgProduct, name: "Product19", price: 40 },
-        { id: 19, img: imgProduct, name: "Product20", price: 50 },
-    ];
+
 
     // Filter products based on search input (case insensitive)
     const filteredItems = items.filter((item) =>
@@ -61,7 +42,8 @@ export const Products = () => {
             const updatedItem = [...currentItem, item];
             localStorage.setItem("wish", JSON.stringify(updatedItem));
             setWishList(updatedItem); // Update state to reflect changes
-            console.log("Item added to wishlist successfully");
+            // console.log("Item added to wishlist successfully");
+            return
         } else {
             alert("Item already in wishlist");
         }
@@ -101,26 +83,32 @@ export const Products = () => {
                 {filteredItems.length > 0 ? (
                     filteredItems.slice(0, visibleCount).map((item) => (
                         <div className="">
-                            <div key={item.id} className="flex items-center my-1 bg-gray-300 p-3 gap-4">
-                                <div>
-                                    <img src={item.img} alt="img" className="h-[180px] w-[200px]" />
+                            <Link to={`/details/${item.id}`}>
+                                <div key={item.id} className="flex items-center my-1 bg-gray-300 p-3 gap-4">
+                                    <div>
+                                        <img src={item.img} alt="img" className="h-[180px] w-[200px]" />
+                                    </div>
+                                    <div className="w-[200px] p-1">
+                                        <h2 className="font-semibold text-2xl">
+                                            {item.name}
+                                        </h2>
+                                        <p className="w-[auto]">
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas in nesciunt placeat sapiente
+                                        </p>
+                                        <div className="text-black text-xl font-semibold flex items-center gap-2">
+                                            ${item.price}
+                                            <button
+                                                onClick={(e) => {
+                                                    e.stopPropagation(); // Prevent <Link> from being triggered
+                                                    e.preventDefault(); // Prevent page navigation
+                                                    addToWishList(item);
+                                                }}
+                                            >                                                <FaHeart className={`text-2xl ${isItemInWishList(item.id) ? "text-red-600" : "text-gray-500"}`} />
+                                            </button>
+                                        </div> <br />
+                                    </div>
                                 </div>
-                                <div className="w-[200px] p-1">
-                                    <h2 className="font-semibold text-2xl">
-                                        {item.name}
-                                    </h2>
-                                    <p className="w-[auto]">
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas in nesciunt placeat sapiente
-                                    </p>
-                                    <div className="text-black text-xl font-semibold flex items-center gap-2">
-                                        ${item.price}
-                                        <button onClick={() => addToWishList(item)}>
-                                            <FaHeart className={`text-2xl ${isItemInWishList(item.id) ? "text-red-600" : "text-gray-500"}`} />
-                                        </button>
-
-                                    </div> <br />
-                                </div>
-                            </div>
+                            </Link>
                         </div>
                     ))
                 ) : (

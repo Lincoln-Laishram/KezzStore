@@ -25,9 +25,7 @@ export const Profile = () => {
           setUserName(user.name);
 
         }
-        console.log('Active session found:', user);
       } catch (err) {
-        console.log('No active session found. Clearing localStorage.');
       }
     }
     checkSession();
@@ -44,7 +42,6 @@ export const Profile = () => {
     const newWishLists = wishLists.filter((item) => item.id !== id);
     localStorage.setItem("wish", JSON.stringify(newWishLists));
     setWishLists(newWishLists);
-    console.log('Deleted');
   }
 
   const handleLogOut = async () => {
@@ -57,7 +54,7 @@ export const Profile = () => {
         navigate('/');
       } catch (error) {
         setError(error);
-        console.error('Error deleting user account:', error.message);
+        // console.error('Error deleting user account:', error.message);
       }
     } else {
       navigate('/');
