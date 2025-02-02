@@ -69,7 +69,8 @@ export const HomePage = () => {
                             <div className="">
                                 <div key={index} 
                                 className="
-                                flex items-center gap-6 w-[322px] h-[200px] p-4 shadow-md shadow-gray-600 rounded-xl
+                                flex items-center gap-6 w-[322px] h-[180px] p-4 shadow-md shadow-gray-600 rounded-xl
+                                md:w-[400px]
                                 lg:w-[350px]
 
                                 ">
@@ -80,13 +81,13 @@ export const HomePage = () => {
                                     " 
                                     />
                                     <div>
-                                        <h2 className="font-semibold text-3xl
-                                        lg:text-2xl
+                                        <h2 className="font-semibold text-xl
+                                        lg:text-xl
                                         ">
                                             {item.name}
                                         </h2>
-                                        <p className="w-[auto] text-xl
-                                        lg:3xl
+                                        <p className="w-[auto] text-lg
+                                        lg:lg
                                         ">
                                             $10
                                         </p>
