@@ -11,6 +11,14 @@ export const HomePage = () => {
         { img: img2, name: "Neuroactiv6" },
         { img: img3, name: "Pinealxt" },
     ];
+    const newProducts = [
+        { img: img1, name: "Emperor" },
+        { img: img2, name: "Neuroactiv6" },
+        { img: img3, name: "Pinealxt" },
+        { img: img1, name: "Emperor" },
+        { img: img2, name: "Neuroactiv6" },
+        { img: img3, name: "Pinealxt" },
+    ]
 
     const services = [
         { label: "24/7 DELIVERY" },
@@ -23,14 +31,10 @@ export const HomePage = () => {
             <NavBar />
 
             {/* Carousel Section */}
-            <div className="relative h-[280px] w-full">
-                <div className="absolute top-0 z-[1] w-full h-[250px] bg-white border border-black">
-                    <Carousal />
-                </div>
-            </div>
+            <Carousal />
 
             {/* Top Sales Section */}
-            <div className="relative text-center border-b border-black p-6">
+            <div className="relative text-center border-b border-gray-400 p-6">
                 <h1 className="text-3xl font-bold">OUR TOP SALE</h1>
                 <div className="flex flex-wrap justify-center gap-6 p-6">
                     {topSales.map((item, index) => (
@@ -38,9 +42,13 @@ export const HomePage = () => {
                             <img
                                 src={item.img}
                                 alt={item.name}
-                                className="h-[160px] mx-auto"
+                                className="h-[160px] mx-auto
+                                lg:h-[220px]
+                                "
                             />
-                            <p className="mt-2 text-lg font-semibold">
+                            <p className="mt-2 text-lg font-semibold
+                            lg:text-2xl
+                            ">
                                 {item.name}
                             </p>
                         </div>
@@ -50,21 +58,47 @@ export const HomePage = () => {
                     SEE MORE
                 </button>
             </div>
+            {/* NEW IN THE MARKET */}
+            <div className="p-4">
+                <h1 className="text-3xl font-bold text-center">NEW PRODUCTS </h1>
+                <div className="overflow-x-auto whitespace-nowrap flex gap-6 p-4 mb-4 
+                scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-gray-300
+                hover:scrollbar-thumb-gray-700">
+                    {newProducts.map((item, index) => (
+                        <>
+                            <div className="">
+                                <div key={index} 
+                                className="
+                                flex items-center gap-6 w-[322px] h-[200px] p-4 shadow-md shadow-gray-600 rounded-xl
+                                lg:w-[350px]
 
-            {/* Services Section */}
-            <div className="relative text-center p-6 border-b border-black">
-                <h1 className="text-3xl font-bold">WE OFFER</h1>
-                <div className="p-10">
-                    {services.map((service, index) => (
-                        <div key={index} className="flex flex-col items-center">
-                            <div className="bg-gray-300 h-[150px] w-[150px] rounded-full"></div>
-                            <p className="mt-4 text-lg font-semibold">{service.label}</p>
-                        </div>
+                                ">
+                                    <img src={item.img} alt={item.name} 
+                                    className="
+                                    w-[140px]
+                                    lg:w-[160px]
+                                    " 
+                                    />
+                                    <div>
+                                        <h2 className="font-semibold text-3xl
+                                        lg:text-2xl
+                                        ">
+                                            {item.name}
+                                        </h2>
+                                        <p className="w-[auto] text-xl
+                                        lg:3xl
+                                        ">
+                                            $10
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </>
                     ))}
                 </div>
             </div>
             {/* Footer Section */}
-            <Footer/>
+            <Footer />
         </>
     );
 };

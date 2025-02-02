@@ -85,6 +85,8 @@ lg:w-[550px]
                 </div>
             </div>
 
+{/* RECOMMENDED */}
+
             <h1 className='text-2xl mx-4'>Related Products:</h1>
             <div
                 className="
