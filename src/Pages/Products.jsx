@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import { NavBar } from "../Components/Navigation";
 import { useNavigate, Link } from "react-router-dom";
 import { Items } from "../Components/Items";
@@ -30,22 +32,19 @@ export const Products = () => {
     const HandleSeeMore = () => {
         setVisibleCount((prev) => prev + 5);
     }
-    // const WishList = () => {
-    //     setWish((prev) => !prev)
-    // }
-
     const addToWishList = (item) => {
         const currentItem = JSON.parse(localStorage.getItem("wish")) || [];
-        const isDuplicate = currentItem.some(wishItem => wishItem.id === item.id);
-
-        if (!isDuplicate) {
+        const isPresent = currentItem.some(wishItem => wishItem.id === item.id);
+        if (!isPresent) {
             const updatedItem = [...currentItem, item];
             localStorage.setItem("wish", JSON.stringify(updatedItem));
-            setWishList(updatedItem); // Update state to reflect changes
-            // console.log("Item added to wishlist successfully");
-            return
+            toast.success('Added to wishlist')
+            setWishList(updatedItem); 
         } else {
-            alert("Item already in wishlist");
+            const updatedItem = currentItem.filter(wishItem => wishItem.id !== item.id);
+            localStorage.setItem("wish", JSON.stringify(updatedItem));
+            toast.success('Removed from wishlist')
+            setWishList(updatedItem);
         }
     };
 
@@ -57,6 +56,7 @@ export const Products = () => {
     return (
         <>
             <NavBar />
+            <ToastContainer position="top-center" autoClose={2000} />
             <center>
                 <div className="my-8 flex items-center bg-gray-300 p-2 pl-4 w-[60%] rounded-lg">
                     <div className="text-gray-500">

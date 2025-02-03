@@ -1,5 +1,7 @@
 import React from 'react';
 import { Items } from '../Components/Items';
+import { ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -8,6 +10,7 @@ import { FaHeart } from "react-icons/fa";
 import { Footer } from './Footer';
 export const ProductDetails = () => {
     const items = Items(); // Ensure this is an array
+
     const [wishList, setWishList] = useState(() => JSON.parse(localStorage.getItem("wish")) || []); // Remove extra spaces in the initial state
     const { id } = useParams(); // Get the ID from the URL
     const details = items.find((item) => item.id === Number(id));
@@ -17,19 +20,23 @@ export const ProductDetails = () => {
     console.log("Product tag:", details.tag);
     const relatedItems = items.filter((item) => item.tag === details.tag && item.id !== details.id);
     console.log("Related items:", relatedItems);
+
     const addToWishList = (item) => {
         const currentItem = JSON.parse(localStorage.getItem("wish")) || [];
-        const isDuplicate = currentItem.some(wishItem => wishItem.id === item.id);
-
-        if (!isDuplicate) {
+        const isPresent = currentItem.some(wishItem => wishItem.id === item.id);
+        if (!isPresent) {
             const updatedItem = [...currentItem, item];
             localStorage.setItem("wish", JSON.stringify(updatedItem));
-            setWishList(updatedItem); // Update state to reflect changes
-            return
+            toast.success('Added to wishlist')
+            setWishList(updatedItem);
         } else {
-            alert("Item already in wishlist");
+            const updatedItem = currentItem.filter(wishItem => wishItem.id !== item.id);
+            localStorage.setItem("wish", JSON.stringify(updatedItem));
+            toast.success('Removed from wishlist')
+            setWishList(updatedItem);
         }
     };
+
     const isItemInWishList = (itemId) => {
         return wishList.some(wishItem => wishItem.id === itemId);
     };
@@ -37,16 +44,13 @@ export const ProductDetails = () => {
     return (
         <>
             <NavBar />
+            <ToastContainer position="top-center" autoClose={2000} />
+
             <div className="p-2 w-[100%] sm:w-[100%] md:w-[100%] md:flex items-center justify-center">
                 <div>
                     <img src={details.img} alt={details.name}
-                        className='
-         h-[220px] mx-auto p-2
-     md:h-[300px] md:p-4
-     lg:h-[400px]
-     '
+                        className='h-[220px] mx-auto p-2 md:h-[300px] md:p-4 lg:h-[400px]'
                     />
-
                 </div>
                 <div className='
 bg-gray-300 p-2 
@@ -85,7 +89,7 @@ lg:w-[550px]
                 </div>
             </div>
 
-{/* RECOMMENDED */}
+            {/* RECOMMENDED */}
 
             <h1 className='text-2xl mx-4'>Related Products:</h1>
             <div
