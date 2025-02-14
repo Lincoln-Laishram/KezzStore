@@ -1,109 +1,62 @@
 // Import Swiper core and required modules
-import img1 from "../assets/Pictures/emperor.png";
-import img2 from "../assets/Pictures/kerassentials.png";
-import img3 from "../assets/Pictures/pinealxt.png";
-import { Navigation, Autoplay, A11y, EffectFade } from "swiper/modules";
+import thumbnail from "../assets/Pictures/thumb1.jpg";
+import thumbnail1 from "../assets/Pictures/thumb2.jpg";
+import { Navigation, Autoplay, A11y, EffectFade, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/effect-fade";
+import "swiper/css/pagination"; // ✅ Import Pagination styles
 
 export const Carousal = () => {
     return (
-        <div className="border-b border-b-gray-400 border-solid">
+        <div className="bg-amber-300 w-full lg:w-1/2 border border-gray-500 relative">
             <Swiper
-                modules={[Navigation, Autoplay, EffectFade, A11y]}
+                modules={[Navigation, Autoplay, EffectFade, Pagination, A11y]}
                 spaceBetween={50}
                 slidesPerView={1}
-                effect="fade" // Enable the fade effect
+                effect="fade"
+                pagination={{ clickable: true }} // ✅ Enable pagination
                 autoplay={{
                     delay: 3000,
                     disableOnInteraction: false,
                 }}
-                navigation={{
-                    nextEl: ".swiper-button-next",
-                    prevEl: ".swiper-button-prev",
-                }}
                 loop={true}
             >
-
-                <SwiperSlide className="bg-[white] p-6">
-                    <div className="
-                flex justify-evenly h-[200px]
-                lg:h-[400px] lg:justify-center gap-8
-                ">
-                        <img
-                            className="
-                    h-[150px] w-[auto] relative left-[-24px] my-[auto]
-                    sm:h-[150px]
-                    lg:h-[340px]
-                    " src={img1} alt="Slide 2" />
-                        <div
-                            className="
-                    my-[auto] w-[150px] 
-                    lg:
-                    ">
-                            <p className="font-bold text-2xl lg:text-4xl">NeuroActiv6</p>
-                            <p className="text-l text-[red] lg:text-2xl">80%</p>
-                            <button className=" 
-                        w-[100px] mt-2 px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-600
-                        sm:text-lg
-                        lg:h-[40px] lg:w-[150px] lg:text-xl
-                        ">
-                                Details
-                            </button>
-                        </div>
+                <SwiperSlide className="bg-white">
+                    <div className="flex justify-center items-center h-[200px] lg:h-[400px]">
+                        <img className="h-full w-full object-cover" src={thumbnail} alt="Slide 1" />
                     </div>
                 </SwiperSlide>
 
-                <SwiperSlide className="bg-white p-6">
-                    <div className="
-                flex justify-evenly h-[200px]
-                lg:h-[400px] lg:justify-center gap-8
-                ">
-                        <img
-                            className="
-                    h-[150px] w-[auto] relative left-[-24px] my-[auto]
-                    sm:h-[150px]
-                    lg:h-[340px]
-                    " src={img1} alt="Slide 2" />
-                        <div className="my-[auto] w-[150px] ">
-                            <p className="font-bold text-2xl">Kerassentials</p>
-                            <p className="text-l text-[red]">40%</p>
-                            <button className=" w-[100px] mt-2 px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-600">
-                                Details
-                            </button>
-                        </div>
+                <SwiperSlide className="bg-white">
+                    <div className="flex justify-center items-center h-[200px] lg:h-[400px]">
+                        <img className="h-full w-full object-cover" src={thumbnail1} alt="Slide 2" />
                     </div>
                 </SwiperSlide>
-
-                <SwiperSlide className="bg-white p-6">
-                    <div className="
-                flex justify-evenly h-[200px]
-                lg:h-[400px] lg:justify-center gap-8
-                ">
-                        <img
-                            className="
-                    h-[150px] w-[auto] relative left-[-24px] my-[auto]
-                    sm:h-[150px]
-                    lg:h-[340px]
-                    " src={img1} alt="Slide 2" />                    <div className="my-[auto] w-[150px] ">
-                            <p className="font-bold text-2xl">Pinealxt</p>
-                            <p className="text-l text-[red]">80%</p>
-                            <button className=" w-[100px] mt-2 px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-600">
-                                Details
-                            </button>
-                        </div>
-                    </div>
-                </SwiperSlide>
-                <div className="hidden sm:block">
-                    <div className="swiper-button-prev"></div>
-                    <div className="swiper-button-next"></div>
-                </div>
-
             </Swiper>
-        </div >
+
+            {/* Custom Styled Pagination */}
+            <style>
+                {`
+                .swiper-pagination-bullet {
+                    width: 20px;
+                    height: 20px;
+                    background-color: white;
+                    border:1px solid white;
+                    opacity: 0.6;
+                    transition: all 0.3s ease-in-out;
+                }
+
+                .swiper-pagination-bullet-active {
+                    background-color: black;
+                    opacity: 1;
+                    transform: scale(1.2);
+                }
+                `}
+            </style>
+        </div>
     );
 };

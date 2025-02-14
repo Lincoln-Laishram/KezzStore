@@ -1,11 +1,11 @@
-import logo from "../assets/Pictures/icon.png";
-import { FaFacebookF, FaInstagram, FaTwitter, FaSnapchat } from "react-icons/fa";
+import logo from "../assets/Pictures/LOGO.png";
+import { FaFacebookF, FaInstagram, FaTwitter, FaSnapchat, FaWhatsapp } from "react-icons/fa";
 export const Footer = () => {
     return (
         <>
             <footer className="h-[650px] p-6 text-center bg-black">
                 <div>
-                    <img src={logo} alt="logo" className="h-[220px] mx-[auto]" />v
+                    <img src={logo} alt="logo" className="h-[220px] mx-[auto] rounded-full" />v
                 </div>
                 <div>
                     <ul className="text-[gray] text-lg">
@@ -18,13 +18,10 @@ export const Footer = () => {
                         <li className="m-3">
                             About Us
                         </li>
-                        <li className="m-3">
-                            Help Center
-                        </li>
                     </ul>
-                </div>
-                <div>
-                    Connect with us on <br /><br />
+                </div> <br />
+                <div className="text-[gray] text-2xl">
+                    Connect with us on <br />
                     <div>
                         <ul className="flex justify-center gap-1 text-[gray] text-xl">
                             <li className="m-3 text-3xl">
@@ -43,7 +40,7 @@ export const Footer = () => {
                     </div>
                 </div>
                 <div className="text-[gray] text-xl relative top-6">
-                    &copy; 2023 Pinealxt. All rights reserved.
+                    &copy; 2025 Pinealxt. All rights reserved.
                 </div>
             </footer>
         </>
