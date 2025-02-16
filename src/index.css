@@ -1,22 +1,6 @@
 @import "tailwindcss";
 /* Scrollbar for Webkit browsers (Chrome, Safari) */
-::-webkit-scrollbar {
-    height: 8px; /* Controls horizontal scrollbar height */
-  }
-  
-  ::-webkit-scrollbar-track {
-    background: #eff0f2; /* Light gray track */
-    border-radius: 10px;
-  }
-  
-  ::-webkit-scrollbar-thumb {
-    background: #8f8f90; /* Dark gray thumb */
-    border-radius: 10px;
-  }
-  
-  ::-webkit-scrollbar-thumb:hover {
-    background: #4b5563; /* Darker gray on hover */
-  }
+
 
   
   
