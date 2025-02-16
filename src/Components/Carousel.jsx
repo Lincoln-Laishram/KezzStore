@@ -4,11 +4,10 @@ import carousal2 from "../assets/Pictures/carousal2.jpg";
 import { Navigation, Autoplay, A11y, EffectFade, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/effect-fade";
-import "swiper/css/pagination"; // ✅ Import Pagination styles
+import "swiper/css/pagination";
 
 export const Carousal = () => {
     return (
@@ -18,7 +17,7 @@ export const Carousal = () => {
                 spaceBetween={50}
                 slidesPerView={1}
                 effect="fade"
-                pagination={{ clickable: true }} // ✅ Enable pagination
+                pagination={{ clickable: true }} 
                 autoplay={{
                     delay: 3000,
                     disableOnInteraction: false,
@@ -37,8 +36,6 @@ export const Carousal = () => {
                     </div>
                 </SwiperSlide>
             </Swiper>
-
-            {/* Custom Styled Pagination */}
             <style>
                 {`
                 .swiper-pagination-bullet {
@@ -46,7 +43,6 @@ export const Carousal = () => {
                     height: 10px;
                     border-radius:10px;
                     background-color: gray;
-                    // border:1px solid white;
                     opacity: 1;
                     transition: all 0.3s ease-in-out;
                 }

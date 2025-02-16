@@ -3,10 +3,9 @@ import { NavBar } from "../Components/Navigation";
 import { Carousal } from "../Components/Carousel";
 import { Diamonds } from "../Components/Diamonds";
 import { Footer } from "./Footer";
-export const HomePage = () => {
+export const WebPage = () => {
     return (
         <>
-            {/* Floating WhatsApp Icon */}
             <a
                 href="https://chat.whatsapp.com/JFJGiTUWxF01UlSd644bi7"
                 target="_blank"
@@ -15,7 +14,6 @@ export const HomePage = () => {
             >
                 <FaWhatsapp className="size-15" />
             </a>
-
             <NavBar />
             <Carousal />
             <Diamonds />

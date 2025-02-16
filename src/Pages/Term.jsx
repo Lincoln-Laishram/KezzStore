@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import logo from "../assets/Pictures/LOGO.png"
 export const Terms = () => {
     useEffect(() => {
-        window.scrollTo(0, 0); // Scrolls to the top
+        window.scrollTo(0, 0); 
     }, []);
     return (
         <>

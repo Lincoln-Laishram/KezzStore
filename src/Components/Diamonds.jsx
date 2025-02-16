@@ -104,7 +104,7 @@ export const Diamonds = () => {
                                             <p className="text-lg font-semibold text-gray-800">
                                                 <span className="text-blue-500">💎</span>{diamond.Dias}
                                             </p>
-                                            <div className="mt-2 bg-blue-700 text-white font-bold py-1 rounded-md shadow-md">
+                                            <div className="mt-2 bg-red-500 text-white font-bold py-1 rounded-md shadow-md">
                                                 ₹{diamond.Price}
                                             </div>
                                         </div>
@@ -129,7 +129,7 @@ export const Diamonds = () => {
                                             <p className="text-lg font-semibold text-gray-800">
                                                 <span className="text-blue-500">💎</span>{diamond.Dias}
                                             </p>
-                                            <div className="mt-2 bg-blue-700 text-white font-bold py-1 rounded-md shadow-md">
+                                            <div className="mt-2 bg-red-500 text-white font-bold py-1 rounded-md shadow-md">
                                                 ₹{diamond.Price}
                                             </div>
                                         </div>
@@ -154,7 +154,7 @@ export const Diamonds = () => {
                                             <p className="text-lg font-semibold text-gray-800">
                                                 <span className="text-blue-500">💎</span>{diamond.Dias}
                                             </p>
-                                            <div className="mt-2 bg-blue-700 text-white font-bold py-1 rounded-md shadow-md">
+                                            <div className="mt-2 bg-red-500 text-white font-bold py-1 rounded-md shadow-md">
                                                 ₹{diamond.Price}
                                             </div>
                                         </div>
@@ -173,7 +173,7 @@ export const Diamonds = () => {
                                 <p className="text-lg font-semibold text-gray-800">
                                     <img src={weekly} className="scale-3d" alt="Weelky" />
                                 </p>
-                                <div className="mt-2 bg-blue-700 text-white font-bold py-1 rounded-md shadow-md">
+                                <div className="mt-2 bg-red-500 text-white font-bold py-1 rounded-md shadow-md">
                                     ₹125
                                 </div>
                                 <p>

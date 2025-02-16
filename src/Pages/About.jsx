@@ -4,7 +4,7 @@ import { useEffect } from "react";
 
 export const About = () => {
         useEffect(() => {
-            window.scrollTo(0, 0); // Scrolls to the top
+            window.scrollTo(0, 0); 
         }, []);
         return (
             <>
@@ -23,7 +23,6 @@ export const About = () => {
                         You can also <b>join our community group</b> for updates and exclusive offers.
                     </p>
 
-                    {/* WhatsApp Button */}
                     <a
                         href="https://chat.whatsapp.com/JFJGiTUWxF01UlSd644bi7"
                         target="_blank"
