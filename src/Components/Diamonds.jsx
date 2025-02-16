@@ -80,7 +80,7 @@ export const Diamonds = () => {
                     SELECT YOUR PACK
                 </h1>
                 <br />
-                <h1 className="text-xl m-2">
+                <h1 className="text-xl m-2 font-semibold">
                     SMALL PACK
                 </h1>
                 <ul className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-center">
@@ -105,7 +105,7 @@ export const Diamonds = () => {
                     ))}
                 </ul>
                 <br />
-                <h1 className="text-xl m-2">
+                <h1 className="text-xl m-2 font-semibold">
                     MEDIUM PACK
                 </h1>
                 <ul className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-center">
@@ -130,7 +130,7 @@ export const Diamonds = () => {
                     ))}
                 </ul>
                 <br />
-                <h1 className="text-xl m-2">
+                <h1 className="text-xl m-2 font-semibold">
                     LARGE PACK
                 </h1>
                 <ul className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-center">

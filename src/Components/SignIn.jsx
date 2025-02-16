@@ -3,7 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { account } from '../Config/Auth';
 
 // Icons
-import logo from "../assets/Pictures/icon.png"
+import logo from "../assets/Pictures/LOGO.png"
 import { FcGoogle } from "react-icons/fc";
 import { IoIosArrowBack } from "react-icons/io";
 

@@ -1,6 +1,6 @@
 // Import Swiper core and required modules
-import thumbnail from "../assets/Pictures/thumb1.jpg";
-import thumbnail1 from "../assets/Pictures/thumb2.jpg";
+import carousal1 from "../assets/Pictures/carousal1.jpg";
+import carousal2 from "../assets/Pictures/carousal2.jpg";
 import { Navigation, Autoplay, A11y, EffectFade, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -27,13 +27,13 @@ export const Carousal = () => {
             >
                 <SwiperSlide className="bg-white">
                     <div className="flex justify-center items-center h-[200px] lg:h-[400px]">
-                        <img className="h-full w-full object-cover" src={thumbnail} alt="Slide 1" />
+                        <img className="h-full w-full object-cover" src={carousal1} alt="Slide 1" />
                     </div>
                 </SwiperSlide>
 
                 <SwiperSlide className="bg-white">
                     <div className="flex justify-center items-center h-[200px] lg:h-[400px]">
-                        <img className="h-full w-full object-cover" src={thumbnail1} alt="Slide 2" />
+                        <img className="h-full w-full object-cover" src={carousal2} alt="Slide 2" />
                     </div>
                 </SwiperSlide>
             </Swiper>
@@ -42,16 +42,17 @@ export const Carousal = () => {
             <style>
                 {`
                 .swiper-pagination-bullet {
-                    width: 20px;
-                    height: 20px;
-                    background-color: white;
-                    border:1px solid white;
-                    opacity: 0.6;
+                    width: 50px;
+                    height: 10px;
+                    border-radius:10px;
+                    background-color: gray;
+                    // border:1px solid white;
+                    opacity: 1;
                     transition: all 0.3s ease-in-out;
                 }
 
                 .swiper-pagination-bullet-active {
-                    background-color: black;
+                    background-color: white;
                     opacity: 1;
                     transform: scale(1.2);
                 }

@@ -5,7 +5,7 @@ import { account } from "../Config/Auth";
 import { ID } from "appwrite";
 
 //IMAGES
-import logo from "../assets/Pictures/icon.png";
+import logo from "../assets/Pictures/LOGO.png";
 //ICONS
 import { FcGoogle } from "react-icons/fc";
 import { IoIosArrowBack } from "react-icons/io";

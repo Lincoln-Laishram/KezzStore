@@ -3,22 +3,20 @@ import App from "../App";
 import { SignUp } from "../Components/SignUp";
 import { SignIn } from "../Components/SignIn";
 import { Profile } from "../Components/Profile";
+import { About } from "../Pages/About";
+import { Terms } from "../Pages/Term";
 const router = createBrowserRouter([
     {
         path: "/",
         element: <App/>,
     },
     {
-        path: '/sign_up',
-        element: <SignUp/>
+        path: '/aboutPage',
+        element: <About/>
     },
     {
-        path: '/sign_in',
-        element: <SignIn/>
-    },
-    {
-        path: '/user_profile',
-        element: <Profile/>
-    },
+        path:'/termsAndConditions', 
+        element:<Terms/>
+    }
 ])
 export default router

@@ -1,43 +1,26 @@
 import logo from "../assets/Pictures/LOGO.png";
-import { FaFacebookF, FaInstagram, FaTwitter, FaSnapchat, FaWhatsapp } from "react-icons/fa";
+import { Link } from "react-router-dom";
 export const Footer = () => {
     return (
         <>
-            <footer className="h-[650px] p-6 text-center bg-black">
+            <footer className="h-[500px] p-6 text-center bg-black">
                 <div>
-                    <img src={logo} alt="logo" className="h-[220px] mx-[auto] rounded-full" />v
+                    <img src={logo} alt="logo" className="h-[220px] mx-[auto] rounded-xl" />v
                 </div>
                 <div>
                     <ul className="text-[gray] text-lg">
                         <li className="m-3">
-                            Terms and Conditions
+                            <Link to="/termsAndConditions">
+                                Terms and Conditions
+                            </Link>
                         </li>
                         <li className="m-3">
-                            Our Policy
-                        </li>
-                        <li className="m-3">
-                            About Us
+                            <Link to="/aboutPage">About us</Link>
                         </li>
                     </ul>
-                </div> <br />
+                </div>
                 <div className="text-[gray] text-2xl">
-                    Connect with us on <br />
-                    <div>
-                        <ul className="flex justify-center gap-1 text-[gray] text-xl">
-                            <li className="m-3 text-3xl">
-                                <FaFacebookF />
-                            </li>
-                            <li className="m-3 text-3xl">
-                                <FaTwitter />
-                            </li>
-                            <li className="m-3 text-3xl">
-                                <FaInstagram />
-                            </li>
-                            <li className="m-3 text-3xl">
-                                <FaSnapchat />
-                            </li>
-                        </ul>
-                    </div>
+                    Contact us #00000
                 </div>
                 <div className="text-[gray] text-xl relative top-6">
                     &copy; 2025 Pinealxt. All rights reserved.
