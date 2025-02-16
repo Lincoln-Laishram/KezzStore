@@ -1,5 +1,7 @@
 import logo from "../assets/Pictures/LOGO.png";
 import { Link } from "react-router-dom";
+import { FaPhoneAlt } from "react-icons/fa";
+
 export const Footer = () => {
     return (
         <>
@@ -8,7 +10,7 @@ export const Footer = () => {
                     <img src={logo} alt="logo" className="h-[220px] mx-[auto] rounded-xl" />v
                 </div>
                 <div>
-                    <ul className="text-[gray] text-lg">
+                    <ul className="text-[gray] text-xl">
                         <li className="m-3">
                             <Link to="/termsAndConditions">
                                 Terms and Conditions
@@ -19,8 +21,10 @@ export const Footer = () => {
                         </li>
                     </ul>
                 </div>
-                <div className="text-[gray] text-2xl">
-                    Contact us #00000
+                <div className="text-[gray] text-xl flex justify-center">
+                    <a href = "https://wa.me/message/T2T2QUTLOFIGO1" className="flex items-center gap-1">
+                        Contact us <FaPhoneAlt />
+                    </a>
                 </div>
                 <div className="text-[gray] text-xl relative top-6">
                     &copy; 2025 Pinealxt. All rights reserved.

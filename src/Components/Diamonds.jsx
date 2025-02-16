@@ -4,17 +4,19 @@ import { ToastContainer } from "react-toastify";
 import { toast } from "react-toastify";
 import { database } from "../Config/Db";
 import weekly from '../assets/Pictures/weeklypass.png'
-import GooglePayButton from "@google-pay/button-react";
+import { Loader } from "./Loader";
 export const Diamonds = () => {
     const inputFieldRef = useRef(null); // ✅ Create a ref
     const [dias, setDias] = useState([]);
     const [small, setSmall] = useState([]);
     const [medium, setMedium] = useState([]);
     const [large, setLarge] = useState([]);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         const fetchDias = async () => {
             try {
+                setLoading(true);
                 const res = await database.listDocuments(
                     import.meta.env.VITE_APPWRITE_DATABASE_ID,
                     import.meta.env.VITE_COLLECTION_ID
@@ -22,6 +24,9 @@ export const Diamonds = () => {
                 setDias(res.documents || []);
             } catch (error) {
                 console.error(error);
+            }
+            finally {
+                setLoading(false);
             }
         };
         fetchDias();
@@ -46,8 +51,6 @@ export const Diamonds = () => {
         setMedium(mediumArr);
         setLarge(largeArr);
     }, [dias]); // Runs when `dias` changes
-
-
 
     const [data, setData] = useState({ price: 0, dias: 0 });
     const [gameID, setGameID] = useState({ inGameID: " ", serverID: " " });
@@ -74,113 +77,113 @@ export const Diamonds = () => {
 
     return (
         <>
-            {/* Diamonds Selection */}
-            <div className="w-full p-6 mx-auto bg-gradient-to-br from-gray-50 to-gray-200 border border-gray-300 shadow-lg sm:w-full">
-                <h1 className="text-2xl font-bold text-center border-b p-1">
-                    SELECT YOUR PACK
-                </h1>
-                <br />
-                <h1 className="text-xl m-2 font-semibold">
-                    SMALL PACK
-                </h1>
-                <ul className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-center">
-                    {small.map((diamond, index) => (
-                        <li
-                            key={index}
-                            className="flex justify-center cursor-pointer"
-                            onClick={() => {
-                                setData({ price: diamond.Price, dias: diamond.Dias });
-                                inputFieldRef.current?.scrollIntoView({ behavior: "smooth" }); // ✅ Scroll to input field
-                            }}
-                        >
-                            <div className="w-24 p-3 bg-white border border-gray-300 shadow-md rounded-xl text-center hover:scale-105 hover:shadow-2xl transition-all duration-300">
+            {
+                loading ? (
+                    <Loader />
+                ) : (
+                    <>
+                        <div className="w-full p-6 mx-auto bg-gradient-to-br from-gray-50 to-gray-200 border border-gray-300 shadow-lg sm:w-full">
+                            <h1 className="text-2xl font-bold text-center border-b p-1">
+                                SELECT YOUR PACK
+                            </h1>
+                            <br />
+                            <h1 className="text-xl m-2 font-semibold">
+                                SMALL PACK
+                            </h1>
+                            <ul className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-center">
+                                {small.map((diamond, index) => (
+                                    <li
+                                        key={index}
+                                        className="flex justify-center cursor-pointer"
+                                        onClick={() => {
+                                            setData({ price: diamond.Price, dias: diamond.Dias });
+                                            inputFieldRef.current?.scrollIntoView({ behavior: "smooth" }); // ✅ Scroll to input field
+                                        }}
+                                    >
+                                        <div className="w-24 p-3 bg-white border border-gray-300 shadow-md rounded-xl text-center hover:scale-105 hover:shadow-2xl transition-all duration-300">
+                                            <p className="text-lg font-semibold text-gray-800">
+                                                <span className="text-blue-500">💎</span>{diamond.Dias}
+                                            </p>
+                                            <div className="mt-2 bg-blue-700 text-white font-bold py-1 rounded-md shadow-md">
+                                                ₹{diamond.Price}
+                                            </div>
+                                        </div>
+                                    </li>
+                                ))}
+                            </ul>
+                            <br />
+                            <h1 className="text-xl m-2 font-semibold">
+                                MEDIUM PACK
+                            </h1>
+                            <ul className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-center">
+                                {medium.map((diamond, index) => (
+                                    <li
+                                        key={index}
+                                        className="flex justify-center cursor-pointer"
+                                        onClick={() => {
+                                            setData({ price: diamond.Price, dias: diamond.Dias });
+                                            inputFieldRef.current?.scrollIntoView({ behavior: "smooth" }); // ✅ Scroll to input field
+                                        }}
+                                    >
+                                        <div className="w-24 p-3 bg-white border border-gray-300 shadow-md rounded-xl text-center hover:scale-105 hover:shadow-2xl transition-all duration-300">
+                                            <p className="text-lg font-semibold text-gray-800">
+                                                <span className="text-blue-500">💎</span>{diamond.Dias}
+                                            </p>
+                                            <div className="mt-2 bg-blue-700 text-white font-bold py-1 rounded-md shadow-md">
+                                                ₹{diamond.Price}
+                                            </div>
+                                        </div>
+                                    </li>
+                                ))}
+                            </ul>
+                            <br />
+                            <h1 className="text-xl m-2 font-semibold">
+                                LARGE PACK
+                            </h1>
+                            <ul className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-center">
+                                {large.map((diamond, index) => (
+                                    <li
+                                        key={index}
+                                        className="flex justify-center cursor-pointer"
+                                        onClick={() => {
+                                            setData({ price: diamond.Price, dias: diamond.Dias });
+                                            inputFieldRef.current?.scrollIntoView({ behavior: "smooth" }); // ✅ Scroll to input field
+                                        }}
+                                    >
+                                        <div className="w-24 p-3 bg-white border border-gray-300 shadow-md rounded-xl text-center hover:scale-105 hover:shadow-2xl transition-all duration-300">
+                                            <p className="text-lg font-semibold text-gray-800">
+                                                <span className="text-blue-500">💎</span>{diamond.Dias}
+                                            </p>
+                                            <div className="mt-2 bg-blue-700 text-white font-bold py-1 rounded-md shadow-md">
+                                                ₹{diamond.Price}
+                                            </div>
+                                        </div>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                        <br />
+                        <div>
+                            <div
+                                onClick={() => {
+                                    setData({ price: 125, dias: "Weekly pass" });
+                                    inputFieldRef.current?.scrollIntoView({ behavior: "smooth" }); // ✅ Scroll to input field
+                                }}
+                                className="w-50 p-3 m-6 bg-white border border-gray-300 shadow-md rounded-xl text-center hover:scale-105 hover:shadow-2xl transition-all duration-300">
                                 <p className="text-lg font-semibold text-gray-800">
-                                    <span className="text-blue-500">💎</span>{diamond.Dias}
+                                    <img src={weekly} className="scale-3d" alt="Weelky" />
                                 </p>
                                 <div className="mt-2 bg-blue-700 text-white font-bold py-1 rounded-md shadow-md">
-                                    ₹{diamond.Price}
+                                    ₹125
                                 </div>
-                            </div>
-                        </li>
-                    ))}
-                </ul>
-                <br />
-                <h1 className="text-xl m-2 font-semibold">
-                    MEDIUM PACK
-                </h1>
-                <ul className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-center">
-                    {medium.map((diamond, index) => (
-                        <li
-                            key={index}
-                            className="flex justify-center cursor-pointer"
-                            onClick={() => {
-                                setData({ price: diamond.Price, dias: diamond.Dias });
-                                inputFieldRef.current?.scrollIntoView({ behavior: "smooth" }); // ✅ Scroll to input field
-                            }}
-                        >
-                            <div className="w-24 p-3 bg-white border border-gray-300 shadow-md rounded-xl text-center hover:scale-105 hover:shadow-2xl transition-all duration-300">
-                                <p className="text-lg font-semibold text-gray-800">
-                                    <span className="text-blue-500">💎</span>{diamond.Dias}
+                                <p>
+                                    Weekly Pass
                                 </p>
-                                <div className="mt-2 bg-blue-700 text-white font-bold py-1 rounded-md shadow-md">
-                                    ₹{diamond.Price}
-                                </div>
                             </div>
-                        </li>
-                    ))}
-                </ul>
-                <br />
-                <h1 className="text-xl m-2 font-semibold">
-                    LARGE PACK
-                </h1>
-                <ul className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-center">
-                    {large.map((diamond, index) => (
-                        <li
-                            key={index}
-                            className="flex justify-center cursor-pointer"
-                            onClick={() => {
-                                setData({ price: diamond.Price, dias: diamond.Dias });
-                                inputFieldRef.current?.scrollIntoView({ behavior: "smooth" }); // ✅ Scroll to input field
-                            }}
-                        >
-                            <div className="w-24 p-3 bg-white border border-gray-300 shadow-md rounded-xl text-center hover:scale-105 hover:shadow-2xl transition-all duration-300">
-                                <p className="text-lg font-semibold text-gray-800">
-                                    <span className="text-blue-500">💎</span>{diamond.Dias}
-                                </p>
-                                <div className="mt-2 bg-blue-700 text-white font-bold py-1 rounded-md shadow-md">
-                                    ₹{diamond.Price}
-                                </div>
-                            </div>
-                        </li>
-                    ))}
-                </ul>
-            </div>
-            <br />
-            <div>
-                <div
-                    onClick={() => {
-                        setData({ price: 125, dias: "Weekly pass" });
-                        inputFieldRef.current?.scrollIntoView({ behavior: "smooth" }); // ✅ Scroll to input field
-                    }}
-                    className="w-50 p-3 m-6 bg-white border border-gray-300 shadow-md rounded-xl text-center hover:scale-105 hover:shadow-2xl transition-all duration-300">
-                    <p className="text-lg font-semibold text-gray-800">
-                        <img src={weekly} className="scale-3d" alt="Weelky" />
-                    </p>
-                    <div className="mt-2 bg-blue-700 text-white font-bold py-1 rounded-md shadow-md">
-                        ₹125
-                    </div>
-                    <p>
-                        Weekly Pass
-                    </p>
-                </div>
-            </div>
-
-            {/* EVENT RECHARGE PAGE */}
-
-            <div>
-
-            </div>
-
+                        </div>
+                    </>
+                )
+            }
             {/* Input Fields Section */}
             <div ref={inputFieldRef} className="flex justify-center gap-4 p-5 ">
                 <div>
