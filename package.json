@@ -1,5 +1,5 @@
 {
-  "name": "web_project",
+  "name": "backend",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,8 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@google-pay/button-react": "^3.1.0",
     "@tailwindcss/vite": "^4.0.0",
     "appwrite": "^16.1.0",
+    "express": "^4.21.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-hot-toast": "^2.5.1",
@@ -35,5 +37,9 @@
     "postcss": "^8.5.1",
     "tailwindcss": "^4.0.0",
     "vite": "^6.0.5"
-  }
+  },
+  "description": "mlbb",
+  "main": "eslint.config.js",
+  "author": "Lincoln",
+  "license": "ISC"
 }
