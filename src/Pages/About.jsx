@@ -1,4 +1,4 @@
-import logo from "../assets/Pictures/LOGO.png"
+import logo from "../assets/Pictures/LOGO.jpg"
 import { FaWhatsapp } from "react-icons/fa";
 import { useEffect } from "react";
 

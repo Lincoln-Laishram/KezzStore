@@ -1,4 +1,4 @@
-import logo from "../assets/Pictures/LOGO.png";
+import logo from "../assets/Pictures/LOGO.jpg";
 import upi from "../assets/Pictures/upi.webp"
 import { Link } from "react-router-dom";
 import { FaPhoneAlt } from "react-icons/fa";
