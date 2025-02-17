@@ -1,4 +1,5 @@
 import logo from "../assets/Pictures/LOGO.png";
+import upi from "../assets/Pictures/upi.webp"
 import { Link } from "react-router-dom";
 import { FaPhoneAlt } from "react-icons/fa";
 
@@ -25,6 +26,9 @@ export const Footer = () => {
                     <a href = "https://wa.me/message/T2T2QUTLOFIGO1" className="flex items-center gap-1">
                         Contact us <FaPhoneAlt />
                     </a>
+                </div>
+                <div className="text-[gray] text-xl flex justify-center gap-1 p-1">
+                    Supports <img src={upi} alt="upi" className="h-8"/>
                 </div>
                 <div className="text-[gray] text-xl relative top-6">
                     &copy; 2025 Pinealxt. All rights reserved.

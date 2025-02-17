@@ -82,7 +82,7 @@ export const Diamonds = () => {
                     <Loader />
                 ) : (
                     <>
-                        <div className="w-full p-6 mx-auto bg-gradient-to-br from-gray-50 to-gray-200 border border-gray-300 shadow-lg sm:w-full">
+                        <div className="w-full p-6 mx-auto bg-gradient-to-br from-gray-50 to-gray-200 border border-gray-300 shadow-lg sm:w-full lg:w-[60%]">
                             <h1 className="text-2xl font-bold text-center border-b p-1">
                                 SELECT YOUR PACK
                             </h1>
@@ -163,13 +163,14 @@ export const Diamonds = () => {
                             </ul>
                         </div>
                         <br />
+                        {/* WEEKLY PASS */}
                         <div>
                             <div
                                 onClick={() => {
                                     setData({ price: 125, dias: "Weekly pass" });
                                     inputFieldRef.current?.scrollIntoView({ behavior: "smooth" }); // ✅ Scroll to input field
                                 }}
-                                className="w-50 p-3 m-6 bg-white border border-gray-300 shadow-md rounded-xl text-center hover:scale-105 hover:shadow-2xl transition-all duration-300">
+                                className="w-50 p-3 m-6 bg-white border border-gray-300 shadow-md rounded-xl text-center hover:scale-105 hover:shadow-2xl transition-all duration-300 cursor-pointer sm:border-1 lg:mx-[auto]">
                                 <p className="text-lg font-semibold text-gray-800">
                                     <img src={weekly} className="scale-3d" alt="Weelky" />
                                 </p>
@@ -206,7 +207,7 @@ export const Diamonds = () => {
                     />
                 </div>
             </div>
-            <div className="text-xl p-2 px-4 border-solid border-1 border-gray-500 w-full">
+            <div className="text-xl p-2 px-4 border-solid border-1 border-gray-500 w-full sm:border-1 lg:w-[40%] mx-[auto]">
                 <b>Price</b>: ₹{data.price} <br />
                 <b>Diamonds</b>: 💎{data.dias}
             </div>

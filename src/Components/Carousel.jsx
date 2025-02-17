@@ -1,5 +1,5 @@
 // Import Swiper core and required modules
-import carousal1 from "../assets/Pictures/carousal1.jpg";
+import carousal1 from "../assets/Pictures/carousal1.jpeg";
 import carousal2 from "../assets/Pictures/carousal2.jpg";
 import { Navigation, Autoplay, A11y, EffectFade, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -11,7 +11,7 @@ import "swiper/css/pagination";
 
 export const Carousal = () => {
     return (
-        <div className="bg-amber-300 w-full lg:w-1/2 border border-gray-500 relative">
+        <div className="bg-amber-300 w-full border border-gray-500 relative sm:w-full  lg:w-[60%] lg:mx-[auto] lg:rounded-2xl lg:overflow-hidden lg:m-2">
             <Swiper
                 modules={[Navigation, Autoplay, EffectFade, Pagination, A11y]}
                 spaceBetween={50}
@@ -43,6 +43,7 @@ export const Carousal = () => {
                     height: 10px;
                     border-radius:10px;
                     background-color: gray;
+                    // border:0.5px solid black;
                     opacity: 1;
                     transition: all 0.3s ease-in-out;
                 }
