@@ -28,7 +28,7 @@ export const Terms = () => {
                     <li>You agree to use our services only for lawful purposes.</li>
                     <li className="text-red-500">Any attempt at fraud, chargebacks, or misuse of the service may result in account suspension.</li>
                     <li>
-                        For any issues or inquiries, please contact us at <span className="text-blue-600 font-bold">+1 234 567 8901</span> or <span className="text-blue-600 font-bold">join our community group</span>.
+                        For any issues or inquiries, please contact us at <span className="text-blue-600 font-bold"> <a href="https://wa.me/message/T2T2QUTLOFIGO1">9366471814</a> </span> or <span className="text-blue-600 font-bold"> <a href="https://chat.whatsapp.com/JFJGiTUWxF01UlSd644bi7">join our community group</a> </span>.
                     </li>
                     <li className="italic">We reserve the right to update these Terms and Conditions at any time. Continued use of our services after changes means you accept the new terms.</li>
                 </ul>
