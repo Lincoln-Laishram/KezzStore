@@ -3,6 +3,8 @@ import { useState, useRef, useEffect } from "react";
 import { ToastContainer } from "react-toastify";
 import { toast } from "react-toastify";
 import { database } from "../Config/Db";
+import { NavBar } from "./Navigation";
+import { Footer } from "../Pages/Footer";
 import weekly from '../assets/Pictures/weeklypass.png'
 import { Loader } from "./Loader";
 export const Diamonds = () => {
@@ -82,6 +84,7 @@ export const Diamonds = () => {
                     <Loader />
                 ) : (
                     <>
+                        <NavBar /> <br /><br />
                         <div className="w-full p-6 mx-auto bg-gradient-to-br from-gray-50 to-gray-200 border border-gray-300 shadow-lg sm:w-full lg:w-[60%]">
                             <h1 className="text-2xl font-bold text-center border-b p-1">
                                 SELECT YOUR PACK
@@ -181,46 +184,48 @@ export const Diamonds = () => {
                                     Weekly Pass
                                 </p>
                             </div>
+                            <div ref={inputFieldRef} className="flex justify-center gap-4 p-5 ">
+                                <div>
+                                    <img src={img} alt="icon" className="h-24 w-40 rounded-2xl object-cover" />
+                                </div>
+                                <div className="flex flex-col gap-4 w-full max-w-md">
+                                    <input
+                                        type="tel"
+                                        name="inGameID"
+                                        onChange={HandleChange}
+                                        placeholder="Enter GAME ID"
+                                        className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-700"
+                                    />
+                                    <input
+                                        type="tel"
+                                        name="serverID"
+                                        onChange={HandleChange}
+                                        placeholder="Enter SERVER ID"
+                                        className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-700"
+                                    />
+                                </div>
+                            </div>
+                            <div className="text-xl p-2 px-4 border-solid border-1 border-gray-500 w-full sm:border-1 lg:w-[40%] mx-[auto]">
+                                <b>Price</b>: ₹{data.price} <br />
+                                <b>Diamonds</b>: 💎{data.dias}
+                            </div>
+
+                            {/* Recharge Button */}
+                            <div className="flex justify-center m-8">
+                                <button className="bg-blue-600 text-white text-lg p-3 rounded-lg"
+                                    onClick={HandleSubmit}
+                                >
+                                    Recharge
+                                </button>
+                            </div>
+                            <ToastContainer position="top-center" autoClose={2000} />
                         </div>
+                        <Footer />
                     </>
                 )
             }
             {/* Input Fields Section */}
-            <div ref={inputFieldRef} className="flex justify-center gap-4 p-5 ">
-                <div>
-                    <img src={img} alt="icon" className="h-24 w-40 rounded-2xl object-cover" />
-                </div>
-                <div className="flex flex-col gap-4 w-full max-w-md">
-                    <input
-                        type="tel"
-                        name="inGameID"
-                        onChange={HandleChange}
-                        placeholder="Enter GAME ID"
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-700"
-                    />
-                    <input
-                        type="tel"
-                        name="serverID"
-                        onChange={HandleChange}
-                        placeholder="Enter SERVER ID"
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-700"
-                    />
-                </div>
-            </div>
-            <div className="text-xl p-2 px-4 border-solid border-1 border-gray-500 w-full sm:border-1 lg:w-[40%] mx-[auto]">
-                <b>Price</b>: ₹{data.price} <br />
-                <b>Diamonds</b>: 💎{data.dias}
-            </div>
 
-            {/* Recharge Button */}
-            <div className="flex justify-center m-8">
-                <button className="bg-blue-600 text-white text-lg p-3 rounded-lg"
-                    onClick={HandleSubmit}
-                >
-                    Recharge
-                </button>
-            </div>
-            <ToastContainer position="top-center" autoClose={2000} />
         </>
     );
 };
