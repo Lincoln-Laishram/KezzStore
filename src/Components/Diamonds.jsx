@@ -85,7 +85,7 @@ export const Diamonds = () => {
                 ) : (
                     <>
                         <NavBar /> <br /><br />
-                        <div className="w-full p-6 mx-auto bg-gradient-to-br from-gray-50 to-gray-200 border border-gray-300 shadow-lg sm:w-full lg:w-[60%]">
+                        <div className="w-full p-6 mx-auto bg-gradient-to-br from-gray-50 to-gray-200 border border-gray-300 shadow-lg sm:w-full md:w-[60%] lg:w-[60%]">
                             <h1 className="text-2xl font-bold text-center border-b p-1">
                                 SELECT YOUR PACK
                             </h1>
@@ -171,9 +171,9 @@ export const Diamonds = () => {
                             <div
                                 onClick={() => {
                                     setData({ price: 125, dias: "Weekly pass" });
-                                    inputFieldRef.current?.scrollIntoView({ behavior: "smooth" }); // ✅ Scroll to input field
+                                    inputFieldRef.current?.scrollIntoView({ behavior: "smooth" }); 
                                 }}
-                                className="w-50 p-3 m-6 bg-white border border-gray-300 shadow-md rounded-xl text-center hover:scale-105 hover:shadow-2xl transition-all duration-300 cursor-pointer sm:border-1 lg:mx-[auto]">
+                                className="w-50 p-3 m-6 bg-white border border-gray-300 shadow-md rounded-xl text-center hover:scale-105 hover:shadow-2xl transition-all duration-300 cursor-pointer md:mx-auto lg:mx-[auto]">
                                 <p className="text-lg font-semibold text-gray-800">
                                     <img src={weekly} className="scale-3d" alt="Weelky" />
                                 </p>
@@ -186,7 +186,7 @@ export const Diamonds = () => {
                             </div>
                             <div ref={inputFieldRef} className="flex justify-center gap-4 p-5 ">
                                 <div>
-                                    <img src={img} alt="icon" className="h-24 w-40 rounded-2xl object-cover" />
+                                    <img src={img} alt="icon" className="h-24 w-40 rounded-2xl object-cover md:h-24 md:w-24 lg:h-26 lg:w-26"/>
                                 </div>
                                 <div className="flex flex-col gap-4 w-full max-w-md">
                                     <input

@@ -6,9 +6,9 @@ import { FaPhoneAlt } from "react-icons/fa";
 export const Footer = () => {
     return (
         <>
-            <footer className="h-[500px] p-6 text-center bg-black">
+            <footer className="h-[400px] p-6 text-center bg-black md:h-[520px] lg:h-[520px]">
                 <div>
-                    <img src={logo} alt="logo" className="h-[220px] mx-[auto] rounded-xl" />v
+                    <img src={logo} alt="logo" className="h-[120px] mx-auto rounded-xl sm:h-[180px] lg:h-[200px]" />v
                 </div>
                 <div>
                     <ul className="text-[gray] text-xl">
