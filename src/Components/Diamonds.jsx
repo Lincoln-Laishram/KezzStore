@@ -16,7 +16,7 @@ export const Diamonds = () => {
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-        window.scrollTo(0, 0); 
+        window.scrollTo(0, 0);
     }, []);
 
     useEffect(() => {
@@ -43,7 +43,7 @@ export const Diamonds = () => {
         const largeArr = [];
 
         dias.forEach((element) => {
-            if (element.Price < 1000) {
+            if (element.Price < 1000 && element.Price > 85) {
                 mediumArr.push(element);
             } else {
                 largeArr.push(element);
@@ -62,14 +62,21 @@ export const Diamonds = () => {
             [e.target.name]: e.target.value,
         }));
     };
-
     const HandleIncrement = () => {
+        if (data.dias == 0) {
+            toast.error("Please Select a diamond pack");
+            return;
+        }
         setQuantity(prev => (prev < 3 ? prev + 1 : 3));
     };
 
     const HandleDecrement = () => {
-        setQuantity(prev => (prev > 1 ? prev - 1 : 1)); // Prevent going below 1
-    };
+        if (data.dias == 0) {
+            toast.error("Please Select a diamond pack");
+            return;
+        }
+        setQuantity(prev => (prev > 1 ? prev - 1 : 1));
+    }
     const HandleSubmit = (e) => {
         if (!gameID.inGameID.trim() || !gameID.serverID.trim()) {
             toast.error("Please fill up the In-Game ID and Server ID");
@@ -81,7 +88,7 @@ export const Diamonds = () => {
 
         }
         toast.success("Recharge successfull...")
-        console.log(gameID.inGameID, gameID.serverID);
+        console.log(gameID.inGameID, gameID.serverID, data.price * quantity, data.dias * quantity);
     }
 
     return (
@@ -92,7 +99,7 @@ export const Diamonds = () => {
                 ) : (
                     <>
                         <NavBar /> <br /><br />
-                        <div className="w-full p-6 mx-auto bg-gradient-to-br from-gray-50 to-gray-200 border border-gray-300 shadow-lg sm:w-full md:w-[60%] lg:w-[60%]">
+                        <div className="w-full p-6 mx-auto bg-gradient-to-br from-gray-50 to-gray-200 border border-gray-300 shadow-lg sm:w-full md:w-[70%] lg:w-[70%]">
                             <h1 className="text-2xl font-bold text-center border-b p-1">
                                 SELECT YOUR PACK
                             </h1>
@@ -135,7 +142,7 @@ export const Diamonds = () => {
                                             inputFieldRef.current?.scrollIntoView({ behavior: "smooth" }); // ✅ Scroll to input field
                                         }}
                                     >
-                                        <div className="w-24 p-3 bg-white border border-gray-300 shadow-md rounded-xl text-center hover:scale-105 hover:shadow-2xl transition-all duration-300">
+                                        <div className="w-30 p-3 bg-white border border-gray-300 shadow-md rounded-xl text-center  hover:scale-105 hover:shadow-2xl transition-all duration-300">
                                             <p className="text-lg font-semibold text-gray-800">
                                                 <span className="text-blue-500">💎</span>{diamond.Dias}
                                             </p>

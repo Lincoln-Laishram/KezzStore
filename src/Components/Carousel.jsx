@@ -11,13 +11,13 @@ import "swiper/css/pagination";
 
 export const Carousal = () => {
     return (
-        <div className="w-full border border-gray-500 relative lg:w-[70%] md:w-[70%] md:mx-auto md:m-2 md:rounded-2xl md:overflow-hidden lg:mx-auto lg:rounded-2xl lg:overflow-hidden lg:m-2">
+        <div className="w-full border border-gray-500 relative md:w-[60%] md:mx-auto md:m-2 md:rounded-2xl md:overflow-hidden lg:mx-auto lg:rounded-2xl lg:overflow-hidden lg:m-2 lg:w-[70%]">
             <Swiper
                 modules={[Navigation, Autoplay, EffectFade, Pagination, A11y]}
                 spaceBetween={50}
                 slidesPerView={1}
                 effect="fade"
-                pagination={{ clickable: true }} 
+                pagination={{ clickable: true }}
                 autoplay={{
                     delay: 3000,
                     disableOnInteraction: false,
@@ -25,16 +25,25 @@ export const Carousal = () => {
                 loop={true}
             >
                 <SwiperSlide className="bg-white">
-                    <div className="flex justify-center items-center h-[200px] lg:h-[400px]">
-                        <img className="h-full w-full object-cover" src={carousal1} alt="Slide 1" />
+                    <div className="flex justify-center items-center min-h-[200px] md:h-auto lg:h-[400px]">
+                        <img
+                            className="h-full w-full object-contain md:object-cover"
+                            src={carousal1}
+                            alt="Slide 1"
+                        />
                     </div>
                 </SwiperSlide>
 
                 <SwiperSlide className="bg-white">
-                    <div className="flex justify-center items-center h-[200px] lg:h-[400px]">
-                        <img className="h-full w-full object-cover" src={carousal2} alt="Slide 2" />
+                    <div className="flex justify-center items-center min-h-[200px] md:h-auto lg:h-[400px]">
+                        <img
+                            className="h-full w-full object-contain md:object-cover"
+                            src={carousal2}
+                            alt="Slide 2"
+                        />
                     </div>
                 </SwiperSlide>
+
             </Swiper>
             <style>
                 {`

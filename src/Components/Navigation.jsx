@@ -5,10 +5,10 @@ export const NavBar = () => {
   return (
     <>
 
-      <ul className="flex bg-black sm:p-1 lg:p-4">
+      <ul className="flex bg-black sm:p-1 lg:p-0">
         <li className="p-2">
           <Link to="/">
-            <img src={logo} alt="logo" className="h-[60px] rounded-xl sm:h-[60px] lg:h-[70px]" />
+            <img src={logo} alt="logo" className="h-[60px] rounded-xl sm:h-[60px] lg:h-[60px]" />
           </Link>
         </li>
       </ul>

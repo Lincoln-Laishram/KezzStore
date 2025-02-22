@@ -74,7 +74,7 @@ export const SmallPack = () => {
 
         }
         toast.success("Recharge successfull...")
-        console.log(gameID.inGameID, gameID.serverID);
+        console.log(gameID.inGameID, gameID.serverID, data.price*quantity, data.dias*quantity);
     }
 
     return (
@@ -87,7 +87,7 @@ export const SmallPack = () => {
                         (
                             <>
                             <NavBar/> <br /> <br />
-                                <div className="w-full p-6 mx-auto bg-gradient-to-br from-gray-50 to-gray-200 border border-gray-300 shadow-lg sm:w-full md:w-[60%] lg:w-[60%]">
+                                <div className="w-full p-6 mx-auto bg-gradient-to-br from-gray-50 to-gray-200 border border-gray-300 shadow-lg sm:w-full md:w-[70%] lg:w-[70%]">
                                     <h1 className="text-xl m-2 font-semibold text-center">
                                         CHOOSE YOUR DIAMOND
                                     </h1>
