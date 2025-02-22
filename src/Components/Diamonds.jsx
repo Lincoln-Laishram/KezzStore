@@ -10,9 +10,9 @@ import { Loader } from "./Loader";
 export const Diamonds = () => {
     const inputFieldRef = useRef(null); // ✅ Create a ref
     const [dias, setDias] = useState([]);
-    const [small, setSmall] = useState([]);
     const [medium, setMedium] = useState([]);
     const [large, setLarge] = useState([]);
+    const [quantity, setQuantity] = useState(1);
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
@@ -35,21 +35,17 @@ export const Diamonds = () => {
     }, []);
 
     useEffect(() => {
-        const smallArr = [];
         const mediumArr = [];
         const largeArr = [];
 
         dias.forEach((element) => {
-            if (element.Price < 86) {
-                smallArr.push(element);
-            } else if (element.Price < 1000) {
+            if (element.Price < 1000) {
                 mediumArr.push(element);
             } else {
                 largeArr.push(element);
             }
         });
 
-        setSmall(smallArr);
         setMedium(mediumArr);
         setLarge(largeArr);
     }, [dias]); // Runs when `dias` changes
@@ -63,6 +59,13 @@ export const Diamonds = () => {
         }));
     };
 
+    const handleIncrement = () => {
+        setQuantity(prev => (prev < 3 ? prev + 1 : 3));
+    };
+
+    const handleDecrement = () => {
+        setQuantity(prev => (prev > 1 ? prev - 1 : 1)); // Prevent going below 1
+    };
     const HandleSubmit = (e) => {
         if (!gameID.inGameID.trim() || !gameID.serverID.trim()) {
             toast.error("Please fill up the In-Game ID and Server ID");
@@ -89,31 +92,6 @@ export const Diamonds = () => {
                             <h1 className="text-2xl font-bold text-center border-b p-1">
                                 SELECT YOUR PACK
                             </h1>
-                            <br />
-                            <h1 className="text-xl m-2 font-semibold">
-                                SMALL PACK
-                            </h1>
-                            <ul className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-center">
-                                {small.map((diamond, index) => (
-                                    <li
-                                        key={index}
-                                        className="flex justify-center cursor-pointer"
-                                        onClick={() => {
-                                            setData({ price: diamond.Price, dias: diamond.Dias });
-                                            inputFieldRef.current?.scrollIntoView({ behavior: "smooth" }); // ✅ Scroll to input field
-                                        }}
-                                    >
-                                        <div className="w-24 p-3 bg-white border border-gray-300 shadow-md rounded-xl text-center hover:scale-105 hover:shadow-2xl transition-all duration-300">
-                                            <p className="text-lg font-semibold text-gray-800">
-                                                <span className="text-blue-500">💎</span>{diamond.Dias}
-                                            </p>
-                                            <div className="mt-2 bg-red-500 text-white font-bold py-1 rounded-md shadow-md">
-                                                ₹{diamond.Price}
-                                            </div>
-                                        </div>
-                                    </li>
-                                ))}
-                            </ul>
                             <br />
                             <h1 className="text-xl m-2 font-semibold">
                                 MEDIUM PACK
@@ -168,25 +146,9 @@ export const Diamonds = () => {
                         <br />
                         {/* WEEKLY PASS */}
                         <div>
-                            <div
-                                onClick={() => {
-                                    setData({ price: 125, dias: "Weekly pass" });
-                                    inputFieldRef.current?.scrollIntoView({ behavior: "smooth" }); 
-                                }}
-                                className="w-50 p-3 m-6 bg-white border border-gray-300 shadow-md rounded-xl text-center hover:scale-105 hover:shadow-2xl transition-all duration-300 cursor-pointer md:mx-auto lg:mx-[auto]">
-                                <p className="text-lg font-semibold text-gray-800">
-                                    <img src={weekly} className="scale-3d" alt="Weelky" />
-                                </p>
-                                <div className="mt-2 bg-red-500 text-white font-bold py-1 rounded-md shadow-md">
-                                    ₹125
-                                </div>
-                                <p>
-                                    Weekly Pass
-                                </p>
-                            </div>
                             <div ref={inputFieldRef} className="flex justify-center gap-4 p-5 ">
                                 <div>
-                                    <img src={img} alt="icon" className="h-24 w-40 rounded-2xl object-cover md:h-24 md:w-24 lg:h-26 lg:w-26"/>
+                                    <img src={img} alt="icon" className="h-24 w-40 rounded-2xl object-cover md:h-24 md:w-24 lg:h-26 lg:w-26" />
                                 </div>
                                 <div className="flex flex-col gap-4 w-full max-w-md">
                                     <input
@@ -205,9 +167,35 @@ export const Diamonds = () => {
                                     />
                                 </div>
                             </div>
-                            <div className="text-xl p-2 px-4 border-solid border-1 border-gray-500 w-full sm:border-1 lg:w-[40%] mx-[auto]">
-                                <b>Price</b>: ₹{data.price} <br />
-                                <b>Diamonds</b>: 💎{data.dias}
+                            <div className="flex flex-col lg:flex-row items-center justify-between p-4 border border-gray-300 rounded-lg shadow-md bg-white w-full lg:w-[40%] mx-auto">
+                                {/* Product Info */}
+                                <div className="text-lg font-medium text-gray-800">
+                                    <p>
+                                        <b className="text-gray-900">Total Price</b>:
+                                        <span className="text-green-600"> ₹{data.price * quantity}</span>
+                                    </p>
+                                    <p>
+                                        <b className="text-gray-900">Diamonds</b>:
+                                        <span className="text-blue-500"> 💎{data.dias * quantity}</span>
+                                    </p>
+                                </div>
+
+                                {/* Counter */}
+                                <div className="flex items-center gap-4 bg-gray-100 p-3 rounded-lg shadow-sm w-36 justify-center mt-4 lg:mt-0">
+                                    <button
+                                        onClick={handleDecrement}
+                                        className="px-3 py-1 bg-red-500 text-white rounded-lg hover:bg-red-600 transition"
+                                    >
+                                        -
+                                    </button>
+                                    <span className="text-lg font-semibold">{quantity}</span>
+                                    <button
+                                        onClick={handleIncrement}
+                                        className="px-3 py-1 bg-green-500 text-white rounded-lg hover:bg-green-600 transition"
+                                    >
+                                        +
+                                    </button>
+                                </div>
                             </div>
 
                             {/* Recharge Button */}

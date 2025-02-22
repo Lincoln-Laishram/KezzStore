@@ -3,6 +3,8 @@ import App from "../App";
 import { About } from "../Pages/About";
 import { Terms } from "../Pages/Term";
 import { DiamondPage } from "../Pages/DiamondPage";
+import { SmallPack } from "../Components/SmallPack";
+import { Weekly } from "../Components/Weekly";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -19,6 +21,14 @@ const router = createBrowserRouter([
     {
         path:'/diamondPage',
         element:<DiamondPage/>
+    },
+    {
+        path:'/smallPack',
+        element:<SmallPack/>
+    },
+    {
+        path:'/weeklyPass',
+        element:<Weekly/>
     }
 ])
 export default router
