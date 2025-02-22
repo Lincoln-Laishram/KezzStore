@@ -1,5 +1,6 @@
 import img from "../assets/Pictures/mlbb.webp";
 import { useState, useEffect, useRef } from "react";
+import { toast } from "react-toastify";
 import { ToastContainer } from "react-toastify";
 import { database } from "../Config/Db";
 import { NavBar } from "./Navigation";
@@ -13,6 +14,9 @@ export const SmallPack = () => {
     const [data, setData] = useState({ price: 0, dias: 0 });
     const [filteredData, setFilteredData] = useState([]);
     const [gameID, setGameID] = useState({ inGameID: " ", serverID: " " });
+    useEffect(() => {
+        window.scrollTo(0, 0); 
+    }, []);
 
     useEffect(() => {
         const fetchDias = async () => {
@@ -45,10 +49,18 @@ export const SmallPack = () => {
     };
 
     const HandleIncrement = () => {
+        if(data.dias == 0){
+            toast.error("Please Select a diamond pack");
+            return;
+        }
         setQuantity(prev => (prev < 3 ? prev + 1 : 3));
     };
 
     const HandleDecrement = () => {
+        if(data.dias == 0){
+            toast.error("Please Select a diamond pack");
+            return;
+        }
         setQuantity(prev => (prev > 1 ? prev - 1 : 1)); // Prevent going below 1
     };
     const HandleSubmit = (e) => {
@@ -74,6 +86,7 @@ export const SmallPack = () => {
                     ) :
                         (
                             <>
+                            <NavBar/> <br /> <br />
                                 <div className="w-full p-6 mx-auto bg-gradient-to-br from-gray-50 to-gray-200 border border-gray-300 shadow-lg sm:w-full md:w-[60%] lg:w-[60%]">
                                     <h1 className="text-xl m-2 font-semibold text-center">
                                         CHOOSE YOUR DIAMOND
@@ -99,8 +112,9 @@ export const SmallPack = () => {
                                             </li>
                                         ))}
                                     </ul>
-                                    {/* INPUT FIELD */}
-                                    <div ref={inputFieldRef} className="flex justify-center gap-4 p-5 ">
+                                    {/* INPUT FIELD */}                                    
+                                </div>
+                                <div ref={inputFieldRef} className="flex justify-center gap-4 p-5 ">
                                         <div>
                                             <img src={img} alt="icon" className="h-24 w-40 rounded-2xl object-cover md:h-24 md:w-24 lg:h-26 lg:w-26" />
                                         </div>
@@ -138,16 +152,16 @@ export const SmallPack = () => {
                                         <div className="flex items-center gap-4 bg-gray-100 p-3 rounded-lg shadow-sm w-36 justify-center mt-4 lg:mt-0">
                                             <button
                                                 onClick={HandleDecrement}
-                                                className="px-3 py-1 bg-red-500 text-white rounded-lg hover:bg-red-600 transition"
+                                                className="px-3 py-1 rounded-lg text-lg"
                                             >
-                                                -
+                                                ➖
                                             </button>
-                                            <span className="text-lg font-semibold">{quantity}</span>
+                                            <span className="text-lg font-semibold">{quantity}/3</span>
                                             <button
                                                 onClick={HandleIncrement}
-                                                className="px-3 py-1 bg-green-500 text-white rounded-lg hover:bg-green-600 transition"
+                                                className="px-3 py-1  rounded-lg text-lg"
                                             >
-                                                +
+                                                ➕
                                             </button>
                                         </div>
                                     </div>
@@ -160,8 +174,8 @@ export const SmallPack = () => {
                                             Recharge
                                         </button>
                                     </div>
-                                    <ToastContainer position="top-center" autoClose={2000} />
-                                </div>
+                                <Footer />
+                                <ToastContainer position="top-center" autoClose={2000} />
                             </>
                         )
                 }

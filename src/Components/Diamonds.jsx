@@ -16,6 +16,10 @@ export const Diamonds = () => {
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
+        window.scrollTo(0, 0); 
+    }, []);
+
+    useEffect(() => {
         const fetchDias = async () => {
             try {
                 setLoading(true);
@@ -59,11 +63,11 @@ export const Diamonds = () => {
         }));
     };
 
-    const handleIncrement = () => {
+    const HandleIncrement = () => {
         setQuantity(prev => (prev < 3 ? prev + 1 : 3));
     };
 
-    const handleDecrement = () => {
+    const HandleDecrement = () => {
         setQuantity(prev => (prev > 1 ? prev - 1 : 1)); // Prevent going below 1
     };
     const HandleSubmit = (e) => {
@@ -183,17 +187,17 @@ export const Diamonds = () => {
                                 {/* Counter */}
                                 <div className="flex items-center gap-4 bg-gray-100 p-3 rounded-lg shadow-sm w-36 justify-center mt-4 lg:mt-0">
                                     <button
-                                        onClick={handleDecrement}
-                                        className="px-3 py-1 bg-red-500 text-white rounded-lg hover:bg-red-600 transition"
+                                        onClick={HandleDecrement}
+                                        className="px-3 py-1 rounded-lg text-lg"
                                     >
-                                        -
+                                        ➖
                                     </button>
-                                    <span className="text-lg font-semibold">{quantity}</span>
+                                    <span className="text-lg font-semibold">{quantity}/3</span>
                                     <button
-                                        onClick={handleIncrement}
-                                        className="px-3 py-1 bg-green-500 text-white rounded-lg hover:bg-green-600 transition"
+                                        onClick={HandleIncrement}
+                                        className="px-3 py-1  rounded-lg text-lg"
                                     >
-                                        +
+                                        ➕
                                     </button>
                                 </div>
                             </div>

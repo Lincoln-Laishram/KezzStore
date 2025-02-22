@@ -11,7 +11,7 @@ import "swiper/css/pagination";
 
 export const Carousal = () => {
     return (
-        <div className="bg-amber-300 w-full border border-gray-500 relative sm:w-full  lg:w-[70%] md:w-[70%] md:mx-auto md:m-2 md:rounded-2xl md:overflow-hidden lg:mx-auto lg:rounded-2xl lg:overflow-hidden lg:m-2">
+        <div className="w-full border border-gray-500 relative lg:w-[70%] md:w-[70%] md:mx-auto md:m-2 md:rounded-2xl md:overflow-hidden lg:mx-auto lg:rounded-2xl lg:overflow-hidden lg:m-2">
             <Swiper
                 modules={[Navigation, Autoplay, EffectFade, Pagination, A11y]}
                 spaceBetween={50}
