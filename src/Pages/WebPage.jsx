@@ -18,7 +18,7 @@ export const WebPage = () => {
             </a>
             <NavBar />
             <Carousal />
-            <div className="h-60 flex items-center justify-center w-full scale-80 gap-6 
+            <div className="h-60 flex items-center justify-center w-full scale-80 gap-4 
                 md:w-80 md:mx-[14%] lg:w-100 
                 lg:mx-[14%] lg:gap-4">
                 <Link to="/smallPack">
