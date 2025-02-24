@@ -26,9 +26,10 @@ export const Weekly = () => {
     }, []);
 
     const weeklyPass = [
-        { id: 1, pass: "1 time weekly", price: 125, description: "Completes 100 diamonds task" },
+        { id: 1, pass: "1 time weekly", price: 125, description: "Completes 100 diamonds task", },
         { id: 2, pass: "2 times weekly", price: 250, description: "Completes 200 diamonds task" },
-        { id: 3, pass: "3 times weekly", price: 375, description: "Completes 250 diamonds task" }
+        { id: 3, pass: "3 times weekly", price: 375, description: "Completes 250 diamonds task" },
+        { id: 4, pass: "Weekly pass + 172💎", price: 332, description: "Completes 250 diamonds task" },
     ];
     const HandleChange = (e) => {
         setGameID((prev) => ({
@@ -58,14 +59,14 @@ export const Weekly = () => {
                 ) : (
                     <>
                         <NavBar />
-                        <div className="grid grid-cols-2 w-full gap-2 p-2 md:flex md:items-center md:justify-center lg:flex lg:items-center lg:justify-center lg:gap-8 lg:p-8">
+                        <div className="grid grid-cols-2 justify-center mx-auto w-full p-2 md:flex md:items-center md:justify-center lg:flex lg:items-center lg:justify-center lg:gap-8 lg:p-8">
                             {weeklyPass.map((pass) => (
                                 <div
                                     key={pass.id}
-                                    className="bg-white shadow-gray-300  shadow-md rounded-xl p-5 border border-gray-300 w-44 h-60 md:w-60 lg:w-60 hover:scale-110 transition-transform duration-100 ease-in-out cursor-pointer"
+                                    className="bg-white shadow-gray-400 shadow-md rounded-xl p-5 border border-gray-300 w-45 h-60 scale-80 md:w-60 lg:w-60 hover:scale-110 transition-transform duration-100 ease-in-out cursor-pointer"
                                     onClick={() => {
                                         setData({ pass: pass.pass, price: pass.price });
-                                        inputFieldRef.current?.scrollIntoView({ behavior: "smooth" }); // ✅ Scroll to input field
+                                        inputFieldRef.current?.scrollIntoView({ behavior: "smooth" });
                                     }}
                                 >
                                     <img
@@ -123,7 +124,6 @@ export const Weekly = () => {
                                 </button>
                             </div>
                         </div>
-
                         <ToastContainer position="top-center" autoClose={2000} />
 
                         <Footer />
