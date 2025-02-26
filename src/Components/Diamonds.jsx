@@ -5,7 +5,6 @@ import { toast } from "react-toastify";
 import { database } from "../Config/Db";
 import { NavBar } from "./Navigation";
 import { Footer } from "../Pages/Footer";
-import weekly from '../assets/Pictures/weeklypass.png'
 import { Loader } from "./Loader";
 export const Diamonds = () => {
     const inputFieldRef = useRef(null); // ✅ Create a ref
